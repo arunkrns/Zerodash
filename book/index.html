@@ -601,7 +601,7 @@ footer{padding-bottom:1rem}
 .field{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.25rem;min-width:0}
 .field>label,.field .lbl{font-size:.875rem;font-weight:500;color:var(--fg)}
 .field .opt{color:var(--muted-fg);font-weight:400}
-.field .hint{font-size:.8125rem;color:var(--muted-fg);margin-top:-.125rem}
+.field .hint{font-size:.8125rem;color:var(--muted-fg);margin-top:-.125rem;line-height:1.35}
 .field input,.field select,.field textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg);background:#fff;border:1px solid rgba(9,11,12,.16);border-radius:var(--r-lg);corner-shape:superellipse(var(--sq));padding:.75rem .875rem;outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
 .field input::placeholder,.field textarea::placeholder{color:var(--n400)}
 .field input[type=date]{min-height:3rem}
@@ -697,7 +697,7 @@ footer{padding-bottom:1rem}
               <div class="field" data-required><span class="lbl" id="interest-label">What are you looking to build?</span><div class="pills" role="radiogroup" aria-labelledby="interest-label"><label class="pill"><input type="radio" name="interest" value="A custom solution or product"><span>A custom solution or product</span></label><label class="pill"><input type="radio" name="interest" value="An AI agent or automation"><span>An AI agent or automation</span></label><label class="pill"><input type="radio" name="interest" value="Both, or not sure yet"><span>Both, or not sure yet</span></label></div><span class="err">Pick the closest option.</span></div>
               <div class="row2">
                 <div class="field" data-required><label for="date">Preferred date</label><input id="date" name="date" type="date" ><span class="err">This field is required.</span></div>
-                <div class="field"><label for="timezone">Timezone <span class="opt">(optional)</span></label><span class="hint">Detected from your browser. Edit if it’s wrong.</span><input id="timezone" name="timezone" type="text" placeholder="Europe/London"><span class="err">This field is required.</span></div>
+                <div class="field"><label for="timezone">Timezone <span class="opt">(optional)</span></label><input id="timezone" name="timezone" type="text" placeholder="Europe/London"><span class="hint">Detected from your browser. Edit if it’s wrong.</span><span class="err">This field is required.</span></div>
               </div>
               <div class="field" data-required><span class="lbl" id="slot-label">Preferred time</span><div class="pills" role="radiogroup" aria-labelledby="slot-label"><label class="pill"><input type="radio" name="slot" value="Morning"><span>Morning</span></label><label class="pill"><input type="radio" name="slot" value="Afternoon"><span>Afternoon</span></label><label class="pill"><input type="radio" name="slot" value="Late afternoon"><span>Late afternoon</span></label></div><span class="err">Pick a time window.</span></div>
               <div class="field"><label for="notes">Anything we should know before the call? <span class="opt">(optional)</span></label><textarea id="notes" name="notes" placeholder="The bottleneck, the systems involved, the outcome you want."></textarea></div>
