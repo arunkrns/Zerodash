@@ -581,6 +581,44 @@ footer{padding-bottom:1rem}
 .split-parent{display:inline-block;overflow:hidden;white-space:normal;overflow-wrap:break-word;will-change:transform,opacity;vertical-align:top}
 .split-word{display:inline-block;white-space:nowrap;will-change:transform,opacity}
 .split-char{display:inline-block;will-change:transform,opacity}
+
+/* ---------- industries ---------- */
+.ind-head{padding-bottom:2rem !important}
+.ind-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem}
+.ind-head .h2{margin-top:.75rem;max-width:20ch}
+.ind-arrows{display:flex;gap:.5rem;flex-shrink:0;padding-bottom:.25rem}
+.ind-arrow{display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:999px;border:1px solid var(--line-8);background:#fff;color:var(--fg);cursor:pointer;padding:0;transition:background .15s,transform .15s,opacity .15s}
+.ind-arrow svg{width:1.125rem;height:1.125rem}
+.ind-arrow:hover{background:var(--muted)}
+.ind-arrow:active{transform:scale(.96)}
+.ind-arrow[disabled]{opacity:.3;cursor:default;background:#fff}
+.ind-track-block{padding-top:0 !important}
+.ind-track-block{--bp:1.5rem}
+@media (min-width:640px){.ind-track-block{--bp:2rem}}
+@media (min-width:768px){.ind-track-block{--bp:3.5rem}}
+@media (min-width:1280px){.ind-track-block{--bp:9rem}}
+.ind-track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth;overscroll-behavior-x:contain;margin:0 calc(-1 * var(--bp));padding:0 var(--bp) .5rem;scroll-padding:0 var(--bp)}
+.ind-track::-webkit-scrollbar{display:none}
+.ind-card{position:relative;display:flex;flex-direction:column;flex:0 0 auto;width:20.5rem;scroll-snap-align:start;overflow:hidden;background:#fff;border:1px solid var(--line-8);border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));color:inherit;text-decoration:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.ind-card.in:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);transition-duration:.3s}
+.ind-art{position:relative;height:14rem;overflow:hidden;background:var(--ind-a);background-image:linear-gradient(150deg,var(--ind-a),var(--ind-b))}
+.ind-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:2rem 2rem;-webkit-mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%);mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%)}
+.ind-art::after{content:"";position:absolute;width:22rem;height:22rem;right:-9rem;top:-9rem;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.24),transparent 65%);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ind-card:hover .ind-art::after{transform:scale(1.15)}
+.ind-icon{position:absolute;left:1.5rem;bottom:1.5rem;width:3.5rem;height:3.5rem;color:#fff;opacity:.95;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ind-card:hover .ind-icon{transform:translateY(-4px)}
+.ind-text{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem 1.25rem 1.5rem;flex:1}
+.ind-tag{align-self:flex-start;font-size:.75rem;line-height:1rem;font-weight:500;color:var(--muted-fg);border:1px solid var(--line-8);border-radius:999px;padding:.2rem .6rem}
+.ind-title{font-family:var(--display);font-weight:500;font-size:1.25rem;line-height:1.6rem;letter-spacing:-.005em;margin-top:.25rem;color:var(--fg)}
+.ind-desc{font-size:.875rem;line-height:1.35rem;color:var(--muted-fg)}
+.ind-logistics{--ind-a:#0b3fd6;--ind-b:#3f8cff}
+.ind-health{--ind-a:#0f766e;--ind-b:#34d399}
+.ind-retail{--ind-a:#b45309;--ind-b:#f59e0b}
+.ind-services{--ind-a:#312e81;--ind-b:#7c6cf0}
+.ind-manufacturing{--ind-a:#3f3f46;--ind-b:#8b8b93}
+.ind-finance{--ind-a:#0e7490;--ind-b:#22c1e8}
+@media (min-width:768px){.ind-track{gap:1.5rem}.ind-card{width:22rem}.ind-art{height:15rem}}
+@media (max-width:639px){.ind-head-row{flex-direction:column;align-items:flex-start;gap:1.25rem}.ind-card{width:17.5rem}}
 </style>
 </head>
 <body>
@@ -1190,6 +1228,95 @@ footer{padding-bottom:1rem}
     </div>
   </div>
 
+  <!-- ================= INDUSTRIES ================= -->
+  <section class="section" id="industries">
+    <div class="wrap">
+      <div class="block ind-head">
+        <div class="ind-head-row">
+          <div>
+            <p class="eyebrow-p"><a class="eyebrow" href="#industries">Industries
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></p>
+            <h2 class="h2">Solving the problems that move the business.</h2>
+          </div>
+          <div class="ind-arrows">
+            <button class="ind-arrow" type="button" data-ind-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+            <button class="ind-arrow" type="button" data-ind-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="block ind-track-block">
+        <div class="ind-track" data-ind-track>
+          <a class="ind-card ind-logistics" href="book/" data-reveal>
+            <div class="ind-art" aria-hidden="true">
+              <div class="ind-grid"></div>
+              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14h24v18H6zM30 20h7l5 6v6h-12z"/><circle cx="13" cy="34" r="3.5"/><circle cx="35" cy="34" r="3.5"/><path d="M10 22h10M10 27h6" stroke-opacity=".6"/></svg>
+            </div>
+            <div class="ind-text">
+              <span class="ind-tag">Logistics</span>
+              <h3 class="ind-title">Dispatch that reroutes itself when the day changes</h3>
+              <p class="ind-desc">Live carrier data, driver hours and customer windows in one board, with an agent that reshuffles the plan and tells the right people why.</p>
+            </div>
+          </a>
+          <a class="ind-card ind-health" href="book/" data-reveal style="transition-delay:.05s">
+            <div class="ind-art" aria-hidden="true">
+              <div class="ind-grid"></div>
+              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="32" height="32" rx="8"/><path d="M24 17v14M17 24h14"/></svg>
+            </div>
+            <div class="ind-text">
+              <span class="ind-tag">Healthcare</span>
+              <h3 class="ind-title">Patient intake without the clipboard</h3>
+              <p class="ind-desc">Forms, eligibility checks and reminders handled before the visit, with clinicians seeing a clean summary instead of a stack of PDFs.</p>
+            </div>
+          </a>
+          <a class="ind-card ind-retail" href="book/" data-reveal style="transition-delay:.1s">
+            <div class="ind-art" aria-hidden="true">
+              <div class="ind-grid"></div>
+              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l3-8h26l3 8M8 16h32v24H8z"/><path d="M18 24a6 6 0 0012 0"/></svg>
+            </div>
+            <div class="ind-text">
+              <span class="ind-tag">Retail and e-commerce</span>
+              <h3 class="ind-title">Support that resolves, not just replies</h3>
+              <p class="ind-desc">Returns, order changes and where-is-my-parcel questions answered from your real order data, with refunds waiting for a human yes.</p>
+            </div>
+          </a>
+          <a class="ind-card ind-services" href="book/" data-reveal style="transition-delay:.15s">
+            <div class="ind-art" aria-hidden="true">
+              <div class="ind-grid"></div>
+              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h28v28H10z"/><path d="M16 20h16M16 26h16M16 32h10"/><path d="M18 8v8M30 8v8"/></svg>
+            </div>
+            <div class="ind-text">
+              <span class="ind-tag">Professional services</span>
+              <h3 class="ind-title">Proposals and reports drafted from the work itself</h3>
+              <p class="ind-desc">Agents that read the project record, pull the numbers and draft the document, so partners review instead of rewrite.</p>
+            </div>
+          </a>
+          <a class="ind-card ind-manufacturing" href="book/" data-reveal style="transition-delay:.2s">
+            <div class="ind-art" aria-hidden="true">
+              <div class="ind-grid"></div>
+              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V20l10 6v-6l10 6v-6l12 7v13z"/><path d="M14 40v-6M24 40v-6M34 40v-6"/></svg>
+            </div>
+            <div class="ind-text">
+              <span class="ind-tag">Manufacturing</span>
+              <h3 class="ind-title">Fewer surprises on the floor</h3>
+              <p class="ind-desc">Machine logs, maintenance tickets and parts stock joined up, so the next failure is flagged before it stops a line.</p>
+            </div>
+          </a>
+          <a class="ind-card ind-finance" href="book/" data-reveal style="transition-delay:.25s">
+            <div class="ind-art" aria-hidden="true">
+              <div class="ind-grid"></div>
+              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="36" height="24" rx="4"/><path d="M6 20h36"/><path d="M12 29h8"/></svg>
+            </div>
+            <div class="ind-text">
+              <span class="ind-tag">Finance and insurance</span>
+              <h3 class="ind-title">Reconciliation that closes the month on time</h3>
+              <p class="ind-desc">Payments matched to invoices and policies overnight, exceptions explained in plain language, and every action logged for audit.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= CTA ================= -->
   <div class="cta-wrap" id="contact">
     <div class="wrap">
@@ -1656,6 +1783,15 @@ body.lm-locked{overflow:hidden}
   document.querySelectorAll('[data-reveal],#iconWall').forEach(function(el){io.observe(el);});
   function revealFallback(){document.querySelectorAll("[data-reveal]:not(.in)").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.95&&r.bottom>0)el.classList.add("in");});}
   setTimeout(revealFallback,900);var rfT;addEventListener("scroll",function(){clearTimeout(rfT);rfT=setTimeout(revealFallback,80);},{passive:true});
+
+  // ----- industries carousel -----
+  var indTrack=document.querySelector("[data-ind-track]");
+  if(indTrack){var indPrev=document.querySelector("[data-ind-prev]"),indNext=document.querySelector("[data-ind-next]");
+    var indStep=function(){var c=indTrack.querySelector(".ind-card");return c?c.getBoundingClientRect().width+(parseFloat(getComputedStyle(indTrack).columnGap)||16):320;};
+    var indState=function(){var max=indTrack.scrollWidth-indTrack.clientWidth-1;indPrev.disabled=indTrack.scrollLeft<=1;indNext.disabled=indTrack.scrollLeft>=max;};
+    indPrev.addEventListener("click",function(){indTrack.scrollBy({left:-indStep(),behavior:"smooth"});});
+    indNext.addEventListener("click",function(){indTrack.scrollBy({left:indStep(),behavior:"smooth"});});
+    indTrack.addEventListener("scroll",indState,{passive:true});addEventListener("resize",indState);indState();}
 
   // ----- benchmark tabs -----
   var data=[
