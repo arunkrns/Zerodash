@@ -539,7 +539,9 @@ footer{padding:3.5rem 0}
 .socials{color:var(--muted-fg);display:inline-flex;align-items:center;gap:.5rem}
 .socials svg{width:1.25rem;height:1.25rem}
 .socials a:hover{color:var(--fg)}
-.foot-mark{margin-top:0;line-height:0}
+.foot-mark{margin-top:2.5rem;line-height:0}
+@media (min-width:768px){.foot-mark{margin-top:3.5rem}}
+@media (min-width:1280px){.foot-mark{margin-top:4.5rem}}
 .foot-mark + .foot-bottom{margin-top:1.5rem}
 @media (min-width:640px){.foot-mark + .foot-bottom{margin-top:2rem}}
 .foot-mark canvas{display:block;width:100%;height:auto;aspect-ratio:1000/128;cursor:default}
@@ -1265,8 +1267,16 @@ footer{padding-bottom:1rem}
         var W,H,dpr,src,cells=[],CELL=8,mouse={x:-1e9,y:-1e9},str=0,target=0,raf=null,t0=Date.now();
         function build(){dpr=Math.min(window.devicePixelRatio||1,2);W=c.clientWidth||c.parentNode.clientWidth;if(!W||W<4)return;H=Math.round(W*0.128);c.style.height=H+"px";c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
           src=document.createElement("canvas");src.width=c.width;src.height=c.height;var o=src.getContext("2d");o.setTransform(dpr,0,0,dpr,0,0);
-          var fs=H*1.36;o.font="700 "+fs+"px Inter, Geist, -apple-system, sans-serif";o.textBaseline="alphabetic";var tw=o.measureText("ZERODASH").width||1;
-          o.save();o.scale(W/tw,1);o.fillStyle=getComputedStyle(document.body).color||"#090b0c";o.fillText("ZERODASH",0,H*0.985);o.restore();
+          var fs=H*1.36;o.font="700 "+fs+"px Inter, Geist, -apple-system, sans-serif";o.textBaseline="alphabetic";
+          // ZER + pixel logo glyph as the O + DASH
+          var capH=(o.measureText("H").actualBoundingBoxAscent)||fs*0.72,gap=fs*0.06,glyph=capH*1.1,cell=glyph/12;
+          var wZ=o.measureText("ZER").width,wD=o.measureText("DASH").width,total=wZ+gap+glyph+gap+wD||1;
+          var GLYPH=[[4,2],[5,2],[6,2],[7,2],[3,3],[8,3],[2,4],[9,4],[2,5],[9,5],[2,6],[9,6],[2,7],[9,7],[3,8],[8,8],[4,9],[5,9],[6,9],[7,9],[1,10],[2,9],[3,8],[4,7],[5,6],[6,5],[7,4],[8,3],[9,2],[10,1]];
+          var base=H*0.985,ink=getComputedStyle(document.body).color||"#090b0c";
+          o.save();o.scale(W/total,1);o.fillStyle=ink;o.fillText("ZER",0,base);
+          var gx=wZ+gap,gy=base-capH-(glyph-capH)/2;
+          GLYPH.forEach(function(p){o.fillRect(gx+p[0]*cell,gy+p[1]*cell,cell+0.5,cell+0.5);});
+          o.fillText("DASH",gx+glyph+gap,base);o.restore();
           var img=o.getImageData(0,0,src.width,src.height).data,cs=CELL*dpr;cells=[];
           for(var y=0;y<src.height;y+=cs)for(var x=0;x<src.width;x+=cs){var px=Math.min(src.width-1,(x+cs/2)|0),py=Math.min(src.height-1,(y+cs/2)|0);if(img[(py*src.width+px)*4+3]>110)cells.push({x:x/dpr,y:y/dpr,r:Math.random()*2-1,s:Math.random()*2-1,p:Math.random(),w:Math.random()*6.28});}
           draw();}
@@ -1300,25 +1310,27 @@ footer{padding-bottom:1rem}
 /* ================= lead modals (contact / book) ================= */
 .lm-backdrop{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(9,11,12,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .lm-backdrop.open{display:flex}
-.lm{position:relative;width:min(66rem,100%);max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);background:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);box-shadow:0 40px 80px -20px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);transform:translateY(12px) scale(.985);opacity:0;transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .28s}
+.lm{position:relative;width:min(80rem,100%);max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);background:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);box-shadow:0 40px 80px -20px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);transform:translateY(12px) scale(.985);opacity:0;transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .28s}
 .lm-backdrop.open .lm{transform:none;opacity:1}
-@media (min-width:900px){.lm{grid-template-columns:5fr 6fr;grid-template-rows:minmax(0,1fr);height:min(42rem,calc(100vh - 2rem));height:min(42rem,calc(100dvh - 2rem))}}
+@media (min-width:900px){.lm{grid-template-columns:5fr 6fr;grid-template-rows:minmax(0,1fr);height:min(50rem,calc(100vh - 2rem));height:min(50rem,calc(100dvh - 2rem))}}
 .lm-media{position:relative;min-height:11rem;background:#0b1d3a;overflow:hidden}
 @media (min-width:900px){.lm-media{min-height:0}}
 .lm-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .lm-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,30,.25),rgba(4,10,30,.05) 40%,rgba(4,10,30,.35))}
 .lm-media .lm-quote{position:absolute;left:1.5rem;right:1.5rem;bottom:1.5rem;z-index:1;color:#fff;font-family:var(--display);font-size:1.25rem;font-weight:500;line-height:1.35;text-shadow:0 2px 16px rgba(4,10,30,.5);display:none}
 @media (min-width:900px){.lm-media .lm-quote{display:block;font-size:1.5rem}}
-.lm-close{position:absolute;top:1.25rem;left:1.25rem;z-index:2;width:2.5rem;height:2.5rem;border-radius:9999px;background:rgba(0,0,0,.25);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;transition:background .15s}
-.lm-close:hover{background:rgba(0,0,0,.4)}
-.lm-close svg{width:1.25rem;height:1.25rem}
+.lm-close{position:absolute;top:1rem;right:1rem;z-index:3;width:2.5rem;height:2.5rem;border-radius:9999px;background:var(--muted);color:var(--fg);display:flex;align-items:center;justify-content:center;transition:background .15s,transform .1s}
+.lm-close:hover{background:#e8e8e8}
+.lm-close:active{transform:scale(.95)}
+.lm-close svg{width:1.125rem;height:1.125rem}
+@media (max-width:899px){.lm-close{background:rgba(0,0,0,.35);color:#fff;backdrop-filter:blur(6px)}.lm-close:hover{background:rgba(0,0,0,.5)}}
 .lm-body{padding:1.75rem 1.5rem 1.5rem;overflow:auto;display:flex;flex-direction:column}
 @media (min-width:640px){.lm-body{padding:2.5rem}}
-@media (min-width:900px){.lm-body{padding:3rem 3rem 2.5rem}}
-.lm-inner{width:100%;max-width:28rem;margin:auto 0}
+@media (min-width:900px){.lm-body{padding:3.5rem 4rem 3rem}}
+.lm-inner{width:100%;max-width:34rem;margin:auto 0}
 @media (min-width:900px){.lm-inner{margin:auto}}
 .lm-title{font-family:var(--display);font-size:1.75rem;line-height:2.125rem;font-weight:600;letter-spacing:-.01em;color:var(--fg);margin-bottom:.5rem}
-@media (min-width:640px){.lm-title{font-size:1.875rem;line-height:2.25rem}}
+@media (min-width:640px){.lm-title{font-size:2.125rem;line-height:2.5rem}}
 .lm-sub{color:var(--muted-fg);font-size:.9375rem;margin-bottom:1.75rem}
 .lm-sub button{color:var(--brand-content);font-weight:500;padding:0}
 .lm-sub button:hover{text-decoration:underline;text-underline-offset:3px}
@@ -1360,8 +1372,8 @@ body.lm-locked{overflow:hidden}
     <div class="lm-media">
       <img src="assets/about-hero.jpg" alt="">
       <p class="lm-quote">You know what needs to change. The hard part is having the technology to make it happen.</p>
-      <button class="lm-close" type="button" data-lm-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
     </div>
+    <button class="lm-close" type="button" data-lm-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div class="lm-body">
       <div class="lm-inner">
         <div class="lm-head">
@@ -1395,8 +1407,8 @@ body.lm-locked{overflow:hidden}
     <div class="lm-media">
       <img src="assets/cta-rider.jpg" alt="">
       <p class="lm-quote">Thirty minutes with the people who would build it.</p>
-      <button class="lm-close" type="button" data-lm-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
     </div>
+    <button class="lm-close" type="button" data-lm-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div class="lm-body">
       <div class="lm-inner">
         <div class="lm-head">
@@ -1643,6 +1655,8 @@ body.lm-locked{overflow:hidden}
   // ----- reveal on scroll -----
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -10% 0px',threshold:.1});
   document.querySelectorAll('[data-reveal],#iconWall').forEach(function(el){io.observe(el);});
+  function revealFallback(){document.querySelectorAll("[data-reveal]:not(.in)").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.95&&r.bottom>0)el.classList.add("in");});}
+  setTimeout(revealFallback,900);var rfT;addEventListener("scroll",function(){clearTimeout(rfT);rfT=setTimeout(revealFallback,80);},{passive:true});
 
   // ----- benchmark tabs -----
   var data=[

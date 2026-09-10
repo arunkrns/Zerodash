@@ -539,7 +539,9 @@ footer{padding:3.5rem 0}
 .socials{color:var(--muted-fg);display:inline-flex;align-items:center;gap:.5rem}
 .socials svg{width:1.25rem;height:1.25rem}
 .socials a:hover{color:var(--fg)}
-.foot-mark{margin-top:0;line-height:0}
+.foot-mark{margin-top:2.5rem;line-height:0}
+@media (min-width:768px){.foot-mark{margin-top:3.5rem}}
+@media (min-width:1280px){.foot-mark{margin-top:4.5rem}}
 .foot-mark + .foot-bottom{margin-top:1.5rem}
 @media (min-width:640px){.foot-mark + .foot-bottom{margin-top:2rem}}
 .foot-mark canvas{display:block;width:100%;height:auto;aspect-ratio:1000/128;cursor:default}
@@ -733,8 +735,16 @@ footer{padding-bottom:1rem}
         var W,H,dpr,src,cells=[],CELL=8,mouse={x:-1e9,y:-1e9},str=0,target=0,raf=null,t0=Date.now();
         function build(){dpr=Math.min(window.devicePixelRatio||1,2);W=c.clientWidth||c.parentNode.clientWidth;if(!W||W<4)return;H=Math.round(W*0.128);c.style.height=H+"px";c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
           src=document.createElement("canvas");src.width=c.width;src.height=c.height;var o=src.getContext("2d");o.setTransform(dpr,0,0,dpr,0,0);
-          var fs=H*1.36;o.font="700 "+fs+"px Inter, Geist, -apple-system, sans-serif";o.textBaseline="alphabetic";var tw=o.measureText("ZERODASH").width||1;
-          o.save();o.scale(W/tw,1);o.fillStyle=getComputedStyle(document.body).color||"#090b0c";o.fillText("ZERODASH",0,H*0.985);o.restore();
+          var fs=H*1.36;o.font="700 "+fs+"px Inter, Geist, -apple-system, sans-serif";o.textBaseline="alphabetic";
+          // ZER + pixel logo glyph as the O + DASH
+          var capH=(o.measureText("H").actualBoundingBoxAscent)||fs*0.72,gap=fs*0.06,glyph=capH*1.1,cell=glyph/12;
+          var wZ=o.measureText("ZER").width,wD=o.measureText("DASH").width,total=wZ+gap+glyph+gap+wD||1;
+          var GLYPH=[[4,2],[5,2],[6,2],[7,2],[3,3],[8,3],[2,4],[9,4],[2,5],[9,5],[2,6],[9,6],[2,7],[9,7],[3,8],[8,8],[4,9],[5,9],[6,9],[7,9],[1,10],[2,9],[3,8],[4,7],[5,6],[6,5],[7,4],[8,3],[9,2],[10,1]];
+          var base=H*0.985,ink=getComputedStyle(document.body).color||"#090b0c";
+          o.save();o.scale(W/total,1);o.fillStyle=ink;o.fillText("ZER",0,base);
+          var gx=wZ+gap,gy=base-capH-(glyph-capH)/2;
+          GLYPH.forEach(function(p){o.fillRect(gx+p[0]*cell,gy+p[1]*cell,cell+0.5,cell+0.5);});
+          o.fillText("DASH",gx+glyph+gap,base);o.restore();
           var img=o.getImageData(0,0,src.width,src.height).data,cs=CELL*dpr;cells=[];
           for(var y=0;y<src.height;y+=cs)for(var x=0;x<src.width;x+=cs){var px=Math.min(src.width-1,(x+cs/2)|0),py=Math.min(src.height-1,(y+cs/2)|0);if(img[(py*src.width+px)*4+3]>110)cells.push({x:x/dpr,y:y/dpr,r:Math.random()*2-1,s:Math.random()*2-1,p:Math.random(),w:Math.random()*6.28});}
           draw();}
