@@ -512,7 +512,7 @@ kbd{font-family:inherit}
 .banner .btn-primary{background:#fff;color:var(--fg)}
 .banner .btn-primary:hover{background:#e9edf5}
 .banner>*{position:relative}
-.banner .galaxy{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.9}
+.banner .galaxy{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:0}
 @media (min-width:640px){.banner{padding:5rem 2rem 14rem;min-height:38rem}}
 @media (min-width:1280px){.banner{padding:6rem 2rem 16rem;min-height:40rem}}
 .banner .h2{margin-bottom:2rem;padding-top:1rem}
@@ -1558,10 +1558,16 @@ body.lm-locked{overflow:hidden}
   function resize(){var w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h);gl.uniform3f(U.uResolution,w,h,w/h);}
   resize();var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(resize,150);});
 
-  var target={x:0.5,y:0.5,active:0},smooth={x:0.5,y:0.5,active:0},running=false,raf=null;
-  host.addEventListener("mousemove",function(e){var r=host.getBoundingClientRect();target.x=(e.clientX-r.left)/r.width;target.y=1-(e.clientY-r.top)/r.height;target.active=1;});
-  host.addEventListener("mouseleave",function(){target.active=0;});
+  var target={x:0.5,y:0.5,active:0},smooth={x:0.5,y:0.5,active:0},running=false,raf=null,lastMove=0,vis=0;
+  canvas.style.opacity="0";
+  host.addEventListener("mousemove",function(e){var r=host.getBoundingClientRect();target.x=(e.clientX-r.left)/r.width;target.y=1-(e.clientY-r.top)/r.height;target.active=1;lastMove=performance.now();});
+  host.addEventListener("mouseleave",function(){target.active=0;lastMove=0;});
   function frame(t){raf=requestAnimationFrame(frame);
+    // stars only while the cursor is moving: fade in on movement, fade out ~0.5s after it stops or leaves
+    if(target.active&&t-lastMove>500)target.active=0;
+    vis+=(target.active-vis)*(target.active?0.08:0.04);
+    canvas.style.opacity=(vis*0.9).toFixed(3);
+    if(vis<0.005){gl.clear(gl.COLOR_BUFFER_BIT);return;}
     gl.uniform1f(U.uTime,t*0.001);gl.uniform1f(U.uStarSpeed,(t*0.001*OPT.starSpeed)/10.0);
     smooth.x+=(target.x-smooth.x)*0.05;smooth.y+=(target.y-smooth.y)*0.05;smooth.active+=(target.active-smooth.active)*0.05;
     gl.uniform2f(U.uMouse,smooth.x,smooth.y);gl.uniform1f(U.uMouseActiveFactor,smooth.active);
