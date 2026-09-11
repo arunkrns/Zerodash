@@ -1549,7 +1549,7 @@ body.lm-locked{overflow:hidden}
   (function(){
     var host=document.querySelector('.hero-video');if(!host)return;
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){host.remove();return;}
-    var CLIPS=['assets/hero/clip-4.mp4','assets/hero/clip-5.mp4','assets/hero/clip-6.mp4','assets/hero/clip-7.mp4'];
+    var CLIPS=['assets/hero/clip-4.mp4','assets/hero/clip-5.mp4','assets/hero/clip-7.mp4'];
     var vids=Array.prototype.slice.call(host.querySelectorAll('video')),cur=0,idx=0,FADE=0.9,switching=false,started=false;
     function load(v,i){v.src=CLIPS[((i%CLIPS.length)+CLIPS.length)%CLIPS.length];v.load();}
     function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}
