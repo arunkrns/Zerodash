@@ -907,31 +907,30 @@ footer{padding-bottom:1rem}
 .lm-body{padding:1.75rem 1.5rem 1.5rem;overflow:auto;display:flex;flex-direction:column}
 @media (min-width:640px){.lm-body{padding:2.5rem}}
 @media (min-width:900px){.lm-body{padding:3.5rem 4rem 3rem}}
-.lm-inner{width:100%;max-width:40rem;margin:auto 0}
+.lm-inner{width:100%;max-width:34rem;margin:auto 0}
 @media (min-width:900px){.lm-inner{margin:auto}}
-.lm-title{font-family:var(--display);font-size:1.75rem;line-height:2.125rem;font-weight:400;letter-spacing:-.02em;color:var(--fg);margin-bottom:.75rem}
-@media (min-width:640px){.lm-title{font-size:2.25rem;line-height:2.625rem}}
-.lm-sub{color:var(--muted-fg);font-size:1rem;line-height:1.5;margin-bottom:2rem}
+.lm-title{font-family:var(--display);font-size:1.5rem;line-height:1.875rem;font-weight:400;letter-spacing:-.02em;color:var(--fg);margin-bottom:.5rem}
+@media (min-width:640px){.lm-title{font-size:1.875rem;line-height:2.25rem}}
+.lm-sub{color:var(--muted-fg);font-size:.9375rem;line-height:1.5;margin-bottom:1.5rem}
 .lm-sub button{color:var(--brand-content);font-weight:500;padding:0}
 .lm-sub button:hover{text-decoration:underline;text-underline-offset:3px}
-.lm-field{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem;min-width:0}
-.lm-field>label{font-size:1rem;line-height:1.25;font-weight:400;color:var(--fg)}
+.lm-field{display:flex;flex-direction:column;gap:.375rem;margin-bottom:1rem;min-width:0}
+.lm-field>label{font-size:.875rem;line-height:1.25;font-weight:400;color:var(--fg)}
 .lm-field .opt{color:var(--muted-fg);font-weight:400}
-.lm-field input,.lm-field select,.lm-field textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg);background:var(--n100);border:1px solid #ececec;border-radius:12px;padding:.75rem 1rem;outline:none;transition:border-color .15s,background .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
-.lm-field input,.lm-field select{height:3.25rem}
+.lm-field input,.lm-field select,.lm-field textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg);background:var(--n100);border:1px solid #ececec;border-radius:10px;padding:.5rem .875rem;outline:none;transition:border-color .15s,background .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+.lm-field input,.lm-field select{height:2.625rem;font-size:.9375rem}
 .lm-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23737373%27 stroke-width=%272.5%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:1rem;padding-right:2.75rem}
-.lm-field textarea{min-height:7rem;resize:vertical;line-height:1.5}
+.lm-field textarea{min-height:5.5rem;resize:vertical;line-height:1.5;font-size:.9375rem}
 .lm-field input::placeholder,.lm-field textarea::placeholder{color:var(--n400)}
 .lm-field select:invalid,.lm-field select[data-empty]{color:var(--n400)}
 .lm-field input:focus,.lm-field select:focus,.lm-field textarea:focus{background:#fff;border-color:var(--n400);box-shadow:0 0 0 3px rgba(9,11,12,.06)}
 .lm-field.invalid input,.lm-field.invalid select,.lm-field.invalid textarea{border-color:#e40014;box-shadow:0 0 0 3px rgba(228,0,20,.08)}
-.lm-field .err{display:none;font-size:.8125rem;color:#c2000f}
+.lm-field .err{display:none;font-size:.75rem;color:#c2000f}
 .lm-field.invalid .err{display:block}
-.lm-row{display:grid;grid-template-columns:1fr;gap:0 1.5rem}
-@media (min-width:560px){.lm-row{grid-template-columns:1fr 1fr;gap:0 2rem}}
-@media (min-width:1100px){.lm-row{gap:0 3rem}}
-.lm-submit{width:100%;height:3.25rem;border-radius:12px;background:#000;color:#fff;font-weight:600;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 3rem;transition:background .15s,transform .1s;margin-top:.5rem}
-@media (min-width:560px){.lm-submit{width:auto;min-width:17rem}}
+.lm-row{display:grid;grid-template-columns:1fr;gap:0 1rem}
+@media (min-width:560px){.lm-row{grid-template-columns:1fr 1fr;gap:0 1.25rem}}
+.lm-submit{width:100%;height:2.75rem;border-radius:10px;background:#000;color:#fff;font-weight:600;font-size:.9375rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 2.5rem;transition:background .15s,transform .1s;margin-top:.25rem}
+@media (min-width:560px){.lm-submit{width:auto;min-width:12rem}}
 .lm-success .lm-submit{margin:0 auto}
 .lm-submit:hover{background:var(--n800)}
 .lm-submit:active{transform:scale(.99)}
