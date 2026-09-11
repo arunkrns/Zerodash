@@ -572,10 +572,13 @@ footer{padding-bottom:1rem}
 .ind-card{position:relative;display:flex;flex-direction:column;flex:0 0 auto;width:20.5rem;scroll-snap-align:start;overflow:hidden;background:#fff;border:1px solid var(--line-8);border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));color:inherit;text-decoration:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
 .ind-card.in:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);transition-duration:.3s}
 .ind-art{position:relative;height:14rem;overflow:hidden;background:var(--ind-a);background-image:linear-gradient(150deg,var(--ind-a),var(--ind-b))}
-.ind-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:2rem 2rem;-webkit-mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%);mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%)}
-.ind-art::after{content:"";position:absolute;width:22rem;height:22rem;right:-9rem;top:-9rem;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.24),transparent 65%);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ind-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.ind-card:hover .ind-img{transform:scale(1.05)}
+.ind-art::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,11,12,.05) 30%,rgba(9,11,12,.62));mix-blend-mode:multiply}
+.ind-grid{position:absolute;inset:0;z-index:1;opacity:.6;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:2rem 2rem;-webkit-mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%);mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%)}
+.ind-art::after{content:"";position:absolute;z-index:1;width:22rem;height:22rem;right:-9rem;top:-9rem;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.24),transparent 65%);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .ind-card:hover .ind-art::after{transform:scale(1.15)}
-.ind-icon{position:absolute;left:1.5rem;bottom:1.5rem;width:3.5rem;height:3.5rem;color:#fff;opacity:.95;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ind-icon{position:absolute;z-index:2;left:1.5rem;bottom:1.5rem;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35));width:3.5rem;height:3.5rem;color:#fff;opacity:.95;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .ind-card:hover .ind-icon{transform:translateY(-4px)}
 .ind-text{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem 1.25rem 1.5rem;flex:1}
 .ind-tag{align-self:flex-start;font-size:.75rem;line-height:1rem;font-weight:500;color:var(--muted-fg);border:1px solid var(--line-8);border-radius:999px;padding:.2rem .6rem}
@@ -1169,6 +1172,7 @@ footer{padding-bottom:1rem}
         <div class="ind-track" data-ind-track>
           <a class="ind-card ind-logistics" href="book/" data-reveal>
             <div class="ind-art" aria-hidden="true">
+              <img class="ind-img" src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
               <div class="ind-grid"></div>
               <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14h24v18H6zM30 20h7l5 6v6h-12z"/><circle cx="13" cy="34" r="3.5"/><circle cx="35" cy="34" r="3.5"/><path d="M10 22h10M10 27h6" stroke-opacity=".6"/></svg>
             </div>
@@ -1180,6 +1184,7 @@ footer{padding-bottom:1rem}
           </a>
           <a class="ind-card ind-health" href="book/" data-reveal style="transition-delay:.05s">
             <div class="ind-art" aria-hidden="true">
+              <img class="ind-img" src="https://images.unsplash.com/photo-1758691462353-36b215702253?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
               <div class="ind-grid"></div>
               <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="32" height="32" rx="8"/><path d="M24 17v14M17 24h14"/></svg>
             </div>
@@ -1191,6 +1196,7 @@ footer{padding-bottom:1rem}
           </a>
           <a class="ind-card ind-retail" href="book/" data-reveal style="transition-delay:.1s">
             <div class="ind-art" aria-hidden="true">
+              <img class="ind-img" src="https://images.unsplash.com/photo-1787209516537-a8e66a1b4360?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
               <div class="ind-grid"></div>
               <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l3-8h26l3 8M8 16h32v24H8z"/><path d="M18 24a6 6 0 0012 0"/></svg>
             </div>
@@ -1202,6 +1208,7 @@ footer{padding-bottom:1rem}
           </a>
           <a class="ind-card ind-services" href="book/" data-reveal style="transition-delay:.15s">
             <div class="ind-art" aria-hidden="true">
+              <img class="ind-img" src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
               <div class="ind-grid"></div>
               <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h28v28H10z"/><path d="M16 20h16M16 26h16M16 32h10"/><path d="M18 8v8M30 8v8"/></svg>
             </div>
@@ -1213,6 +1220,7 @@ footer{padding-bottom:1rem}
           </a>
           <a class="ind-card ind-manufacturing" href="book/" data-reveal style="transition-delay:.2s">
             <div class="ind-art" aria-hidden="true">
+              <img class="ind-img" src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
               <div class="ind-grid"></div>
               <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V20l10 6v-6l10 6v-6l12 7v13z"/><path d="M14 40v-6M24 40v-6M34 40v-6"/></svg>
             </div>
@@ -1224,6 +1232,7 @@ footer{padding-bottom:1rem}
           </a>
           <a class="ind-card ind-finance" href="book/" data-reveal style="transition-delay:.25s">
             <div class="ind-art" aria-hidden="true">
+              <img class="ind-img" src="https://images.unsplash.com/photo-1565347878219-552c839f1447?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
               <div class="ind-grid"></div>
               <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="36" height="24" rx="4"/><path d="M6 20h36"/><path d="M12 29h8"/></svg>
             </div>
