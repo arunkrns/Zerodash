@@ -1160,7 +1160,12 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 .lm-media{position:relative;min-height:11rem;background:#0b1d3a;overflow:hidden}
 @media (min-width:900px){.lm-media{min-height:0}}
 .lm-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.lm-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,30,.25),rgba(4,10,30,.05) 40%,rgba(4,10,30,.35))}
+.lm-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,30,.55),rgba(4,10,30,.18) 38%,rgba(4,10,30,.05) 60%,rgba(4,10,30,.4))}
+.lm-media-copy{position:absolute;z-index:1;left:1.5rem;right:1.5rem;top:1.5rem;color:#fff}
+.lm-media-h{font-family:var(--display);font-weight:500;font-size:1.375rem;line-height:1.15;letter-spacing:-.015em;max-width:16ch;text-shadow:0 2px 16px rgba(4,10,30,.55)}
+.lm-media-p{margin-top:.625rem;font-size:.9375rem;line-height:1.5;color:rgba(255,255,255,.88);max-width:26rem;text-shadow:0 1px 10px rgba(4,10,30,.5)}
+@media (min-width:900px){.lm-media-copy{left:2rem;right:2rem;top:2rem}.lm-media-h{font-size:2rem}}
+@media (max-width:899px){.lm-media{min-height:13rem}.lm-media-p{display:none}}
 .lm-media .lm-quote{position:absolute;left:1.75rem;right:1.75rem;bottom:1.75rem;z-index:1;color:#fff;font-family:var(--display);font-size:1.25rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;text-shadow:0 2px 16px rgba(4,10,30,.5);display:none}
 @media (min-width:900px){.lm-media .lm-quote{display:block;font-size:2rem}}
 .lm-close{position:absolute;top:1rem;right:1rem;z-index:3;width:2.5rem;height:2.5rem;border-radius:9999px;background:var(--muted);color:var(--fg);display:flex;align-items:center;justify-content:center;transition:background .15s,transform .1s}
@@ -1218,6 +1223,10 @@ body.lm-locked{overflow:hidden}
   <div class="lm">
     <div class="lm-media">
       <img src="assets/about-hero.jpg" alt="">
+      <div class="lm-media-copy">
+        <p class="lm-media-h">Built for businesses that don’t have time to wait.</p>
+        <p class="lm-media-p">We work with founders and owner-led businesses where every operational improvement matters.</p>
+      </div>
       <p class="lm-quote">Together we can.</p>
     </div>
     <button class="lm-close" type="button" data-lm-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
@@ -1257,6 +1266,10 @@ body.lm-locked{overflow:hidden}
   <div class="lm">
     <div class="lm-media">
       <img src="assets/cta-rider.jpg" alt="">
+      <div class="lm-media-copy">
+        <p class="lm-media-h">Built for businesses that don’t have time to wait.</p>
+        <p class="lm-media-p">We work with founders and owner-led businesses where every operational improvement matters.</p>
+      </div>
     </div>
     <button class="lm-close" type="button" data-lm-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div class="lm-body">
