@@ -160,8 +160,8 @@ kbd{font-family:inherit}
 .mobile-menu a:hover{background:var(--muted)}
 .mobile-menu .btn{display:flex;width:100%;margin-top:.5rem}
 
-.hero-head{position:relative;z-index:1;padding:4rem 0;text-align:center}
-@media (max-width:639px){.hero-head{padding:4rem 2rem;text-align:left}}
+.hero-head{position:relative;z-index:1;padding:7rem 1.5rem 8.5rem;text-align:center}
+@media (max-width:639px){.hero-head{padding:4.5rem 2rem 5.5rem;text-align:left}}
 .badge{font-family:var(--display);color:rgba(9,11,12,.7);border:1px solid rgba(9,11,12,.2);margin-bottom:1rem;display:inline-flex;height:1.5rem;align-items:center;gap:.125rem;border-radius:9999px;padding:0 .625rem;font-size:.75rem;font-weight:550;letter-spacing:.01em;transition:background .15s}
 .badge:hover{background:rgba(9,11,12,.05)}
 .badge svg{width:.75rem;height:.75rem;opacity:.5;margin-right:-.375rem}
@@ -555,43 +555,36 @@ footer{padding-bottom:1rem}
 /* ---------- industries ---------- */
 .ind-head{padding-bottom:2rem !important}
 .ind-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem}
-.ind-head .h2{margin-top:.75rem;max-width:20ch}
-.ind-arrows{display:flex;gap:.5rem;flex-shrink:0;padding-bottom:.25rem}
-.ind-arrow{display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:999px;border:1px solid var(--line-8);background:#fff;color:var(--fg);cursor:pointer;padding:0;transition:background .15s,transform .15s,opacity .15s}
-.ind-arrow svg{width:1.125rem;height:1.125rem}
+.ind-head .h2{margin-top:.75rem;font-weight:400}
+@media (min-width:1024px){.ind-head .h2{font-size:min(2.75rem,2.6vw);line-height:1.15;white-space:nowrap}}
+.ind-head-row>div{min-width:0}
+.ind-arrows{display:flex;gap:.5rem;flex-shrink:0;padding-bottom:.375rem}
+.ind-arrow{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:999px;border:1px solid var(--line-8);background:var(--n50);color:var(--n700);cursor:pointer;padding:0;transition:background .15s,transform .15s,opacity .15s}
+.ind-arrow svg{width:1rem;height:1rem}
 .ind-arrow:hover{background:var(--muted)}
 .ind-arrow:active{transform:scale(.96)}
-.ind-arrow[disabled]{opacity:.3;cursor:default;background:#fff}
-.ind-track-block{padding-top:0 !important}
-.ind-track-block{--bp:1.5rem}
+.ind-arrow[disabled]{opacity:.35;cursor:default;background:var(--n50)}
+.ind-track-block{padding-top:0 !important;--bp:1.5rem}
 @media (min-width:640px){.ind-track-block{--bp:2rem}}
 @media (min-width:768px){.ind-track-block{--bp:3.5rem}}
 @media (min-width:1280px){.ind-track-block{--bp:9rem}}
 .ind-track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth;overscroll-behavior-x:contain;margin:0 calc(-1 * var(--bp));padding:0 var(--bp) .5rem;scroll-padding:0 var(--bp)}
 .ind-track::-webkit-scrollbar{display:none}
-.ind-card{position:relative;display:flex;flex-direction:column;flex:0 0 auto;width:20.5rem;scroll-snap-align:start;overflow:hidden;background:#fff;border:1px solid var(--line-8);border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));color:inherit;text-decoration:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
-.ind-card.in:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);transition-duration:.3s}
-.ind-art{position:relative;height:14rem;overflow:hidden;background:var(--ind-a);background-image:linear-gradient(150deg,var(--ind-a),var(--ind-b))}
-.ind-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.ind-card:hover .ind-img{transform:scale(1.05)}
-.ind-art::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,11,12,.05) 30%,rgba(9,11,12,.62));mix-blend-mode:multiply}
-.ind-grid{position:absolute;inset:0;z-index:1;opacity:.6;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:2rem 2rem;-webkit-mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%);mask-image:radial-gradient(120% 90% at 100% 0%,#000 30%,transparent 80%)}
-.ind-art::after{content:"";position:absolute;z-index:1;width:22rem;height:22rem;right:-9rem;top:-9rem;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.24),transparent 65%);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.ind-card:hover .ind-art::after{transform:scale(1.15)}
-.ind-icon{position:absolute;z-index:2;left:1.5rem;bottom:1.5rem;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35));width:3.5rem;height:3.5rem;color:#fff;opacity:.95;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.ind-card:hover .ind-icon{transform:translateY(-4px)}
-.ind-text{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem 1.25rem 1.5rem;flex:1}
-.ind-tag{align-self:flex-start;font-size:.75rem;line-height:1rem;font-weight:500;color:var(--muted-fg);border:1px solid var(--line-8);border-radius:999px;padding:.2rem .6rem}
-.ind-title{font-family:var(--display);font-weight:500;font-size:1.25rem;line-height:1.6rem;letter-spacing:-.005em;margin-top:.25rem;color:var(--fg)}
-.ind-desc{font-size:.875rem;line-height:1.35rem;color:var(--muted-fg)}
-.ind-logistics{--ind-a:#0b3fd6;--ind-b:#3f8cff}
-.ind-health{--ind-a:#0f766e;--ind-b:#34d399}
-.ind-retail{--ind-a:#b45309;--ind-b:#f59e0b}
-.ind-services{--ind-a:#312e81;--ind-b:#7c6cf0}
-.ind-manufacturing{--ind-a:#3f3f46;--ind-b:#8b8b93}
-.ind-finance{--ind-a:#0e7490;--ind-b:#22c1e8}
-@media (min-width:768px){.ind-track{gap:1.5rem}.ind-card{width:22rem}.ind-art{height:15rem}}
-@media (max-width:639px){.ind-head-row{flex-direction:column;align-items:flex-start;gap:1.25rem}.ind-card{width:17.5rem}}
+.ind-card{position:relative;display:block;flex:0 0 auto;width:82vw;max-width:40rem;aspect-ratio:1/1;scroll-snap-align:start;overflow:hidden;background:#111;border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));color:#fff;text-decoration:none;isolation:isolate;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+@media (min-width:640px){.ind-card{width:calc((100% + 2 * var(--bp)) * .355);min-width:22rem;max-width:42rem}}
+.ind-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.ind-card:hover .ind-img{transform:scale(1.04)}
+.ind-card::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.12) 40%,rgba(0,0,0,0) 60%,rgba(0,0,0,.3) 100%)}
+.ind-title{position:absolute;z-index:2;left:1.5rem;top:1.375rem;right:4.5rem;margin:0;font-family:var(--display);font-weight:400;font-size:1.375rem;line-height:1.25;letter-spacing:-.01em;color:#fff;max-width:18ch;text-shadow:0 1px 12px rgba(0,0,0,.25)}
+@media (min-width:768px){.ind-title{left:2rem;top:2rem;right:5rem;font-size:1.625rem}}
+@media (min-width:1280px){.ind-title{left:2.25rem;top:2.125rem;font-size:1.875rem}}
+.ind-go{position:absolute;z-index:2;right:1.5rem;top:1.5rem;width:1.5rem;height:1.5rem;color:#fff;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+@media (min-width:768px){.ind-go{right:2rem;top:2rem}}
+.ind-go svg{width:100%;height:100%}
+.ind-card:hover .ind-go{transform:translate(3px,-3px)}
+.ind-tag{position:absolute;z-index:2;right:1.5rem;bottom:1.375rem;font-size:.9375rem;font-weight:500;color:#fff;letter-spacing:-.005em;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+@media (min-width:768px){.ind-tag{right:2rem;bottom:1.75rem;font-size:1.0625rem}}
+.ind-card.in:hover{transform:none}
 </style>
 </head>
 <body>
@@ -631,147 +624,6 @@ footer{padding-bottom:1rem}
         </a>
       </header>
 
-      <div class="hero-ill-wrap">
-        <div class="hero-ill">
-          <div class="hero-stage">
-            <div class="frame" aria-hidden="true">
-              <!-- sidebar -->
-              <div class="sb">
-                <div class="sb-top">
-                  <div class="lights"><span style="background:var(--red-400)"></span><span style="background:var(--amber-400)"></span><span style="background:var(--green-500)"></span></div>
-                  <div class="sb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg></div>
-                </div>
-                <div class="sb-ws">
-                  <span class="avatar"></span><span class="name">Northwind Ops</span>
-                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-                  <div class="grow"></div>
-                  <div class="sb-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
-                  <div class="sb-btn raised"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div>
-                </div>
-                <div class="sb-group">
-                  <div class="sb-label">Pinned</div>
-                  <div class="sb-item"><span class="ic"><span class="tile" style="background:#0f8f5e"></span></span><span class="t">Ledger sync</span></div>
-                  <div class="sb-item"><span class="ic"><span class="tile" style="background:#6c4cf1"></span></span><span class="t">Customer portal</span></div>
-                  <div class="sb-item"><span class="ic"><span class="tile" style="background:#e0492a"></span></span><span class="t">Fleet dashboard</span></div>
-                  <div class="sb-item"><span class="ic"><span class="tile" style="background:#090b0c"></span></span><span class="t">Deploys</span></div>
-                </div>
-                <div class="sb-group fill">
-                  <div class="sb-label">Agents</div>
-                  <div class="sb-item dim"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="t">New agent</span></div>
-                  <div class="sb-item dim"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></span><span class="t">Running now</span><span class="count">3</span><svg class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-                  <div class="sb-item active"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="t">Invoice reconciler</span></div>
-                  <div class="sb-item dim"><span class="ic"><span class="tile" style="background:#f5c518"></span></span><span class="t">Support triage</span></div>
-                  <div class="sb-item dim"><span class="ic"><span class="tile" style="background:#3b5bd9"></span></span><span class="t">Lead enrichment</span></div>
-                  <div class="sb-item dim"><span class="ic"><span class="tile" style="background:#2fb56d"></span></span><span class="t">Weekly ops digest</span></div>
-                  <div class="sb-item dim"><span class="ic"><span class="tile" style="background:#8b8b8b"></span></span><span class="t">Onboarding checklist (4)</span></div>
-                </div>
-              </div>
-              <!-- main panel -->
-              <div class="main">
-                <div class="toolbar">
-                  <div class="tb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></div>
-                  <div class="tb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
-                  <div class="tb-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 11-2.3-5.7"/><path d="M20 4v5h-5"/></svg></div>
-                  <div class="omni">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-                    <div class="sep"></div>
-                    <span>Search projects or type a command</span>
-                  </div>
-                  <div class="tb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
-                </div>
-                <div class="content">
-                  <div class="content-in">
-                    <svg class="watermark" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path d="M4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM3 3h1v1h-1zM8 3h1v1h-1zM2 4h1v1h-1zM9 4h1v1h-1zM2 5h1v1h-1zM9 5h1v1h-1zM2 6h1v1h-1zM9 6h1v1h-1zM2 7h1v1h-1zM9 7h1v1h-1zM3 8h1v1h-1zM8 8h1v1h-1zM4 9h1v1h-1zM5 9h1v1h-1zM6 9h1v1h-1zM7 9h1v1h-1zM1 10h1v1h-1zM2 9h1v1h-1zM4 7h1v1h-1zM5 6h1v1h-1zM6 5h1v1h-1zM7 4h1v1h-1zM9 2h1v1h-1zM10 1h1v1h-1z" fill="#090b0c"/></svg>
-                    <div class="ask">
-                      <div class="askbar">
-                        <div class="ph">Describe what you need built, @ to attach context</div>
-                        <div class="hint"><kbd>Tab</kbd><span>to switch</span></div>
-                        <div class="seg"><div>Ask</div><div class="on">Build</div></div>
-                      </div>
-                      <div class="askrow">
-                        <div class="ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-                        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/></svg><span>Your cloud</span><svg class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-                        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span>Guardrails</span><svg class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-                        <div class="sp"></div>
-                        <div class="chip"><span>Model: Auto</span><svg class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-                        <div class="chip"><span>Thorough</span><svg class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-                      </div>
-                    </div>
-                    <div class="recent">
-                      <div class="recent-head"><div class="t">Recent activity</div></div>
-                      <div class="runs">
-                        <div class="run">
-                          <div class="run-in">
-                            <div class="run-meta"><span class="l">Running for <span id="runClock">4m 12s</span></span></div>
-                            <div class="run-title"><p class="shimmer">Reconciling October invoices</p></div>
-                            <div class="run-steps">
-                              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg><span>Pulling ledger export</span></div>
-                              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg><span>Matching 212 payments</span></div>
-                              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="8" stroke-dasharray="4 4"/></svg><span>Drafting exceptions report</span></div>
-                            </div>
-                          </div>
-                          <div class="run-shot wide">
-                            <div class="mini">
-                              <div class="mini-head"><b>Payments · Oct</b></div>
-                              <div class="mini-row"><b>#4471</b><span class="bar"></span><span class="pill">matched</span></div>
-                              <div class="mini-row"><b>#4472</b><span class="bar"></span><span class="pill">matched</span></div>
-                              <div class="mini-row"><b>#4473</b><span class="bar"></span><span class="pill warn">review</span></div>
-                              <div class="mini-row"><b>#4474</b><span class="bar"></span><span class="pill">matched</span></div>
-                              <div class="mini-row"><b>#4475</b><span class="bar"></span><span class="pill">matched</span></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="run">
-                          <div class="run-in">
-                            <div class="run-meta"><span class="l">an hour ago</span><span class="dot"></span></div>
-                            <div class="run-title"><span class="clamp">Customer portal v2 shipped</span></div>
-                            <div class="run-desc">Deployed to production. Self-serve reorders, live delivery tracking, and a new invoices tab. 14 accounts have already signed in this morning...</div>
-                          </div>
-                          <div class="run-shot h38">
-                            <div class="mini-list">
-                              <div><span class="av"></span><span class="ln" style="width:70px"></span><span class="ln" style="width:22px;margin-left:auto;background:var(--sky-500)"></span></div>
-                              <div><span class="av"></span><span class="ln" style="width:56px"></span><span class="ln" style="width:22px;margin-left:auto;background:var(--sky-500)"></span></div>
-                              <div><span class="av"></span><span class="ln" style="width:82px"></span><span class="ln" style="width:22px;margin-left:auto"></span></div>
-                              <div><span class="av"></span><span class="ln" style="width:48px"></span><span class="ln" style="width:22px;margin-left:auto;background:var(--sky-500)"></span></div>
-                              <div><span class="av"></span><span class="ln" style="width:64px"></span><span class="ln" style="width:22px;margin-left:auto"></span></div>
-                              <div><span class="av"></span><span class="ln" style="width:74px"></span><span class="ln" style="width:22px;margin-left:auto;background:var(--sky-500)"></span></div>
-                              <div><span class="av"></span><span class="ln" style="width:52px"></span><span class="ln" style="width:22px;margin-left:auto"></span></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="run">
-                          <div class="run-in">
-                            <div class="run-meta"><span class="l">an hour ago</span><span class="sched">Every Monday 9am</span><span class="dot"></span></div>
-                            <div class="run-title"><span class="clamp">Weekly ops digest</span></div>
-                            <div class="run-desc">Summary: 1,204 orders shipped, 3 late carriers flagged, and support backlog down 18%. Two vendor contracts renew next week...</div>
-                            <div class="run-doc">
-                              <div class="doc">
-                                <div class="doc-curl"></div>
-                                <div class="ln k" style="width:60%;height:7px;margin-bottom:10px"></div>
-                                <div class="ln" style="width:90%;margin-bottom:6px"></div>
-                                <div class="ln" style="width:84%;margin-bottom:6px"></div>
-                                <div class="ln" style="width:70%;margin-bottom:12px"></div>
-                                <div class="grid2"><div class="tile-sm"></div><div class="tile-sm"></div></div>
-                                <div class="ln" style="width:88%;margin-top:12px;margin-bottom:6px"></div>
-                                <div class="ln" style="width:62%"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="hero-fab">
-            <a class="btn btn-icon" href="#services" aria-label="Scroll to services">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -1171,76 +1023,40 @@ footer{padding-bottom:1rem}
       <div class="block ind-track-block">
         <div class="ind-track" data-ind-track>
           <a class="ind-card ind-logistics" href="book/" data-reveal>
-            <div class="ind-art" aria-hidden="true">
-              <img class="ind-img" src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-              <div class="ind-grid"></div>
-              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14h24v18H6zM30 20h7l5 6v6h-12z"/><circle cx="13" cy="34" r="3.5"/><circle cx="35" cy="34" r="3.5"/><path d="M10 22h10M10 27h6" stroke-opacity=".6"/></svg>
-            </div>
-            <div class="ind-text">
-              <span class="ind-tag">Logistics</span>
-              <h3 class="ind-title">Dispatch that reroutes itself when the day changes</h3>
-              <p class="ind-desc">Live carrier data, driver hours and customer windows in one board, with an agent that reshuffles the plan and tells the right people why.</p>
-            </div>
+            <img class="ind-img" src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
+            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            <h3 class="ind-title">Dispatch that reroutes itself when the day changes</h3>
+            <span class="ind-tag">Logistics</span>
           </a>
           <a class="ind-card ind-health" href="book/" data-reveal style="transition-delay:.05s">
-            <div class="ind-art" aria-hidden="true">
-              <img class="ind-img" src="https://images.unsplash.com/photo-1758691462353-36b215702253?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-              <div class="ind-grid"></div>
-              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="32" height="32" rx="8"/><path d="M24 17v14M17 24h14"/></svg>
-            </div>
-            <div class="ind-text">
-              <span class="ind-tag">Healthcare</span>
-              <h3 class="ind-title">Patient intake without the clipboard</h3>
-              <p class="ind-desc">Forms, eligibility checks and reminders handled before the visit, with clinicians seeing a clean summary instead of a stack of PDFs.</p>
-            </div>
+            <img class="ind-img" src="https://images.unsplash.com/photo-1758691462353-36b215702253?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
+            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            <h3 class="ind-title">Patient intake without the clipboard</h3>
+            <span class="ind-tag">Healthcare</span>
           </a>
           <a class="ind-card ind-retail" href="book/" data-reveal style="transition-delay:.1s">
-            <div class="ind-art" aria-hidden="true">
-              <img class="ind-img" src="https://images.unsplash.com/photo-1787209516537-a8e66a1b4360?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-              <div class="ind-grid"></div>
-              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l3-8h26l3 8M8 16h32v24H8z"/><path d="M18 24a6 6 0 0012 0"/></svg>
-            </div>
-            <div class="ind-text">
-              <span class="ind-tag">Retail and e-commerce</span>
-              <h3 class="ind-title">Support that resolves, not just replies</h3>
-              <p class="ind-desc">Returns, order changes and where-is-my-parcel questions answered from your real order data, with refunds waiting for a human yes.</p>
-            </div>
+            <img class="ind-img" src="https://images.unsplash.com/photo-1787209516537-a8e66a1b4360?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
+            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            <h3 class="ind-title">Support that resolves, not just replies</h3>
+            <span class="ind-tag">Retail and e-commerce</span>
           </a>
           <a class="ind-card ind-services" href="book/" data-reveal style="transition-delay:.15s">
-            <div class="ind-art" aria-hidden="true">
-              <img class="ind-img" src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-              <div class="ind-grid"></div>
-              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h28v28H10z"/><path d="M16 20h16M16 26h16M16 32h10"/><path d="M18 8v8M30 8v8"/></svg>
-            </div>
-            <div class="ind-text">
-              <span class="ind-tag">Professional services</span>
-              <h3 class="ind-title">Proposals and reports drafted from the work itself</h3>
-              <p class="ind-desc">Agents that read the project record, pull the numbers and draft the document, so partners review instead of rewrite.</p>
-            </div>
+            <img class="ind-img" src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
+            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            <h3 class="ind-title">Proposals and reports drafted from the work itself</h3>
+            <span class="ind-tag">Professional services</span>
           </a>
           <a class="ind-card ind-manufacturing" href="book/" data-reveal style="transition-delay:.2s">
-            <div class="ind-art" aria-hidden="true">
-              <img class="ind-img" src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-              <div class="ind-grid"></div>
-              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V20l10 6v-6l10 6v-6l12 7v13z"/><path d="M14 40v-6M24 40v-6M34 40v-6"/></svg>
-            </div>
-            <div class="ind-text">
-              <span class="ind-tag">Manufacturing</span>
-              <h3 class="ind-title">Fewer surprises on the floor</h3>
-              <p class="ind-desc">Machine logs, maintenance tickets and parts stock joined up, so the next failure is flagged before it stops a line.</p>
-            </div>
+            <img class="ind-img" src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
+            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            <h3 class="ind-title">Fewer surprises on the floor</h3>
+            <span class="ind-tag">Manufacturing</span>
           </a>
           <a class="ind-card ind-finance" href="book/" data-reveal style="transition-delay:.25s">
-            <div class="ind-art" aria-hidden="true">
-              <img class="ind-img" src="https://images.unsplash.com/photo-1565347878219-552c839f1447?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-              <div class="ind-grid"></div>
-              <svg class="ind-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="36" height="24" rx="4"/><path d="M6 20h36"/><path d="M12 29h8"/></svg>
-            </div>
-            <div class="ind-text">
-              <span class="ind-tag">Finance and insurance</span>
-              <h3 class="ind-title">Reconciliation that closes the month on time</h3>
-              <p class="ind-desc">Payments matched to invoices and policies overnight, exceptions explained in plain language, and every action logged for audit.</p>
-            </div>
+            <img class="ind-img" src="https://images.unsplash.com/photo-1565347878219-552c839f1447?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
+            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            <h3 class="ind-title">Reconciliation that closes the month on time</h3>
+            <span class="ind-tag">Finance and insurance</span>
           </a>
         </div>
       </div>
@@ -1406,7 +1222,7 @@ footer{padding-bottom:1rem}
 .lm-field.invalid .err{display:block}
 .lm-row{display:grid;grid-template-columns:1fr;gap:0 1.5rem}
 @media (min-width:560px){.lm-row{grid-template-columns:1fr 1fr}}
-.lm-submit{width:100%;height:2.5rem;border-radius:10px;background:#000;color:#fff;font-weight:500;font-size:.875rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 2rem;transition:background .15s,transform .1s;margin-top:.5rem}
+.lm-submit{width:100%;height:2.5rem;border-radius:9999px;background:#000;color:#fff;font-weight:500;font-size:.875rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 2rem;transition:background .15s,transform .1s;margin-top:.5rem}
 @media (min-width:560px){.lm-submit{width:auto;min-width:9rem}}
 .lm-success .lm-submit{margin:0 auto}
 .lm-submit:hover{background:var(--n800)}
@@ -1735,7 +1551,7 @@ body.lm-locked{overflow:hidden}
   var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   // ----- hero run clock -----
   var clock=document.getElementById('runClock'),secs=252;
-  setInterval(function(){secs++;clock.textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';},1000);
+  if(clock)setInterval(function(){secs++;clock.textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';},1000);
 
   // ----- orbit rotation -----
   var orbit=document.getElementById('orbit'),a=0;
