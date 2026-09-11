@@ -1384,28 +1384,32 @@ footer{padding-bottom:1rem}
 .lm-body{padding:1.75rem 1.5rem 1.5rem;overflow:auto;display:flex;flex-direction:column}
 @media (min-width:640px){.lm-body{padding:2.5rem}}
 @media (min-width:900px){.lm-body{padding:3.5rem 4rem 3rem}}
-.lm-inner{width:100%;max-width:34rem;margin:auto 0}
+.lm-inner{width:100%;max-width:40rem;margin:auto 0}
 @media (min-width:900px){.lm-inner{margin:auto}}
-.lm-title{font-family:var(--display);font-size:1.75rem;line-height:2.125rem;font-weight:600;letter-spacing:-.01em;color:var(--fg);margin-bottom:.5rem}
-@media (min-width:640px){.lm-title{font-size:2.125rem;line-height:2.5rem}}
-.lm-sub{color:var(--muted-fg);font-size:.9375rem;margin-bottom:1.75rem}
+.lm-title{font-family:var(--display);font-size:1.75rem;line-height:2.125rem;font-weight:400;letter-spacing:-.02em;color:var(--fg);margin-bottom:.75rem}
+@media (min-width:640px){.lm-title{font-size:2.25rem;line-height:2.625rem}}
+.lm-sub{color:var(--muted-fg);font-size:1rem;line-height:1.5;margin-bottom:2rem}
 .lm-sub button{color:var(--brand-content);font-weight:500;padding:0}
 .lm-sub button:hover{text-decoration:underline;text-underline-offset:3px}
-.lm-field{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.125rem;min-width:0}
-.lm-field>label{font-size:.875rem;font-weight:500;color:var(--n700)}
+.lm-field{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem;min-width:0}
+.lm-field>label{font-size:1rem;line-height:1.25;font-weight:400;color:var(--fg)}
 .lm-field .opt{color:var(--muted-fg);font-weight:400}
-.lm-field input,.lm-field select,.lm-field textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg);background:#fff;border:1px solid rgba(9,11,12,.18);border-radius:12px;padding:.75rem 1rem;outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
-.lm-field input,.lm-field select{height:3.125rem}
+.lm-field input,.lm-field select,.lm-field textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg);background:var(--n100);border:1px solid #ececec;border-radius:12px;padding:.75rem 1rem;outline:none;transition:border-color .15s,background .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+.lm-field input,.lm-field select{height:3.25rem}
 .lm-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23737373%27 stroke-width=%272.5%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:1rem;padding-right:2.75rem}
-.lm-field textarea{min-height:6.5rem;resize:vertical;line-height:1.5}
+.lm-field textarea{min-height:7rem;resize:vertical;line-height:1.5}
 .lm-field input::placeholder,.lm-field textarea::placeholder{color:var(--n400)}
-.lm-field input:focus,.lm-field select:focus,.lm-field textarea:focus{border-color:var(--fg);box-shadow:0 0 0 3px rgba(9,11,12,.1)}
+.lm-field select:invalid,.lm-field select[data-empty]{color:var(--n400)}
+.lm-field input:focus,.lm-field select:focus,.lm-field textarea:focus{background:#fff;border-color:var(--n400);box-shadow:0 0 0 3px rgba(9,11,12,.06)}
 .lm-field.invalid input,.lm-field.invalid select,.lm-field.invalid textarea{border-color:#e40014;box-shadow:0 0 0 3px rgba(228,0,20,.08)}
 .lm-field .err{display:none;font-size:.8125rem;color:#c2000f}
 .lm-field.invalid .err{display:block}
-.lm-row{display:grid;grid-template-columns:1fr;gap:0 1rem}
-@media (min-width:560px){.lm-row{grid-template-columns:1fr 1fr}}
-.lm-submit{width:100%;height:3.125rem;border-radius:12px;background:var(--fg);color:#fff;font-weight:500;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:background .15s,transform .1s;margin-top:.25rem}
+.lm-row{display:grid;grid-template-columns:1fr;gap:0 1.5rem}
+@media (min-width:560px){.lm-row{grid-template-columns:1fr 1fr;gap:0 2rem}}
+@media (min-width:1100px){.lm-row{gap:0 3rem}}
+.lm-submit{width:100%;height:3.25rem;border-radius:12px;background:#000;color:#fff;font-weight:600;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 3rem;transition:background .15s,transform .1s;margin-top:.5rem}
+@media (min-width:560px){.lm-submit{width:auto;min-width:17rem}}
+.lm-success .lm-submit{margin:0 auto}
 .lm-submit:hover{background:var(--n800)}
 .lm-submit:active{transform:scale(.99)}
 .lm-submit[disabled]{opacity:.6;pointer-events:none}
@@ -1439,13 +1443,17 @@ body.lm-locked{overflow:hidden}
         </div>
         <form data-lm-form data-subject="Contact enquiry" novalidate>
           <input class="lm-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+          <div class="lm-field" data-required><label for="lmc-email">Work email</label><input id="lmc-email" name="email" type="email" autocomplete="email" placeholder="Work email"><span class="err">Enter a valid email address.</span></div>
           <div class="lm-row">
-            <div class="lm-field" data-required><label for="lmc-name">Your name</label><input id="lmc-name" name="name" type="text" autocomplete="name" placeholder="Priya Shah"><span class="err">This field is required.</span></div>
-            <div class="lm-field" data-required><label for="lmc-email">Work email</label><input id="lmc-email" name="email" type="email" autocomplete="email" placeholder="you@company.com"><span class="err">Enter a valid email address.</span></div>
+            <div class="lm-field" data-required><label for="lmc-first">First name</label><input id="lmc-first" name="first_name" type="text" autocomplete="given-name" placeholder="First name"><span class="err">This field is required.</span></div>
+            <div class="lm-field" data-required><label for="lmc-last">Last name</label><input id="lmc-last" name="last_name" type="text" autocomplete="family-name" placeholder="Last name"><span class="err">This field is required.</span></div>
           </div>
-          <div class="lm-field"><label for="lmc-company">Company <span class="opt">(optional)</span></label><input id="lmc-company" name="company" type="text" autocomplete="organization" placeholder="Northwind Logistics"></div>
+          <div class="lm-row">
+            <div class="lm-field"><label for="lmc-company">Company</label><input id="lmc-company" name="company" type="text" autocomplete="organization" placeholder="Company name"></div>
+            <div class="lm-field"><label for="lmc-title">Job title</label><input id="lmc-title" name="job_title" type="text" autocomplete="organization-title" placeholder="Job title"></div>
+          </div>
           <div class="lm-field" data-required><label for="lmc-message">What are you trying to build or fix?</label><textarea id="lmc-message" name="message" placeholder="A few lines is plenty: the problem, the systems involved, where things stand today."></textarea><span class="err">Tell us a little about what you need.</span></div>
-          <button class="lm-submit" type="submit">Send message</button>
+          <button class="lm-submit" type="submit">Send</button>
           <p class="lm-status" data-lm-status></p>
         </form>
         <div class="lm-success" role="status" aria-live="polite">
@@ -1473,21 +1481,22 @@ body.lm-locked{overflow:hidden}
         </div>
         <form data-lm-form data-subject="Call request" novalidate>
           <input class="lm-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+          <div class="lm-field" data-required><label for="lmb-email">Work email</label><input id="lmb-email" name="email" type="email" autocomplete="email" placeholder="Work email"><span class="err">Enter a valid email address.</span></div>
           <div class="lm-row">
-            <div class="lm-field" data-required><label for="lmb-name">Your name</label><input id="lmb-name" name="name" type="text" autocomplete="name" placeholder="Priya Shah"><span class="err">This field is required.</span></div>
-            <div class="lm-field" data-required><label for="lmb-email">Work email</label><input id="lmb-email" name="email" type="email" autocomplete="email" placeholder="you@company.com"><span class="err">Enter a valid email address.</span></div>
+            <div class="lm-field" data-required><label for="lmb-first">First name</label><input id="lmb-first" name="first_name" type="text" autocomplete="given-name" placeholder="First name"><span class="err">This field is required.</span></div>
+            <div class="lm-field" data-required><label for="lmb-last">Last name</label><input id="lmb-last" name="last_name" type="text" autocomplete="family-name" placeholder="Last name"><span class="err">This field is required.</span></div>
           </div>
           <div class="lm-row">
-            <div class="lm-field"><label for="lmb-company">Company <span class="opt">(optional)</span></label><input id="lmb-company" name="company" type="text" autocomplete="organization" placeholder="Northwind Logistics"></div>
-            <div class="lm-field" data-required><label for="lmb-interest">What are you looking to build?</label><select id="lmb-interest" name="interest"><option value="" selected disabled>Choose one</option><option>A custom solution or product</option><option>An AI agent or automation</option><option>Both, or not sure yet</option></select><span class="err">Pick the closest option.</span></div>
+            <div class="lm-field"><label for="lmb-company">Company</label><input id="lmb-company" name="company" type="text" autocomplete="organization" placeholder="Company name"></div>
+            <div class="lm-field" data-required><label for="lmb-interest">What are you looking to build?</label><select id="lmb-interest" name="interest" data-empty><option value="" selected disabled>Select an option…</option><option>A custom solution or product</option><option>An AI agent or automation</option><option>Both, or not sure yet</option></select><span class="err">Pick the closest option.</span></div>
           </div>
           <div class="lm-row">
             <div class="lm-field" data-required><label for="lmb-date">Preferred date</label><input id="lmb-date" name="date" type="date" data-lm-date><span class="err">Pick a date.</span></div>
-            <div class="lm-field" data-required><label for="lmb-slot">Preferred time</label><select id="lmb-slot" name="slot"><option value="" selected disabled>Choose a window</option><option>Morning</option><option>Afternoon</option><option>Late afternoon</option></select><span class="err">Pick a time window.</span></div>
+            <div class="lm-field" data-required><label for="lmb-slot">Preferred time</label><select id="lmb-slot" name="slot" data-empty><option value="" selected disabled>Select a window…</option><option>Morning</option><option>Afternoon</option><option>Late afternoon</option></select><span class="err">Pick a time window.</span></div>
           </div>
           <input type="hidden" name="timezone" data-lm-tz>
-          <div class="lm-field"><label for="lmb-notes">Anything we should know? <span class="opt">(optional)</span></label><textarea id="lmb-notes" name="notes" placeholder="The bottleneck, the systems involved, the outcome you want."></textarea></div>
-          <button class="lm-submit" type="submit">Request a call</button>
+          <div class="lm-field"><label for="lmb-notes">Anything we should know?</label><textarea id="lmb-notes" name="notes" placeholder="The bottleneck, the systems involved, the outcome you want."></textarea></div>
+          <button class="lm-submit" type="submit">Send</button>
           <p class="lm-status" data-lm-status></p>
         </form>
         <div class="lm-success" role="status" aria-live="polite">
@@ -1543,8 +1552,9 @@ body.lm-locked{overflow:hidden}
       if(first)first.focus({preventScroll:true});return ok;}
     form.addEventListener("input",function(e){var f=e.target.closest(".lm-field");if(f&&f.classList.contains("invalid"))validate();});
     form.addEventListener("change",function(e){var f=e.target.closest(".lm-field");if(f&&f.classList.contains("invalid"))validate();});
-    function payload(){var o={};new FormData(form).forEach(function(v,k){if(k!=="_honey")o[k]=v;});return o;}
-    function mailto(data){var lines=Object.keys(data).filter(function(k){return k.charAt(0)!=="_"&&data[k];}).map(function(k){return k.charAt(0).toUpperCase()+k.slice(1)+": "+data[k];});
+    form.querySelectorAll("select[data-empty]").forEach(function(sel){sel.addEventListener("change",function(){if(sel.value)sel.removeAttribute("data-empty");else sel.setAttribute("data-empty","");});});
+    function payload(){var o={};new FormData(form).forEach(function(v,k){if(k!=="_honey")o[k]=v;});if(o.first_name||o.last_name)o.name=[o.first_name,o.last_name].filter(Boolean).join(" ");return o;}
+    function mailto(data){var lines=Object.keys(data).filter(function(k){return k.charAt(0)!=="_"&&data[k];}).map(function(k){var l=k.replace(/_/g," ");return l.charAt(0).toUpperCase()+l.slice(1)+": "+data[k];});
       return "mailto:"+LEAD_EMAIL+"?subject="+encodeURIComponent(data._subject)+"&body="+encodeURIComponent(lines.join("\n"));}
     form.addEventListener("submit",function(e){e.preventDefault();
       if(form.querySelector("[name=_honey]").value)return;

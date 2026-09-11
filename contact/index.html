@@ -613,31 +613,31 @@ footer{padding-bottom:1rem}
 @media (min-width:640px){.form-card{padding:2rem}}
 @media (min-width:1280px){.form-card{padding:2.5rem}}
 .form-title{font-family:var(--display);font-size:1.125rem;font-weight:500;color:var(--fg);margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line)}
-.field{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.25rem;min-width:0}
-.field>label,.field .lbl{font-size:.875rem;font-weight:500;color:var(--fg)}
+.field{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem;min-width:0}
+.field>label,.field .lbl{font-size:1rem;line-height:1.25;font-weight:400;color:var(--fg)}
 .field .opt{color:var(--muted-fg);font-weight:400}
 .field .hint{font-size:.8125rem;color:var(--muted-fg);margin-top:-.125rem;line-height:1.35}
-.field input,.field select,.field textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg);background:#fff;border:1px solid rgba(9,11,12,.16);border-radius:var(--r-lg);corner-shape:superellipse(var(--sq));padding:.75rem .875rem;outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg);background:var(--n100);border:1px solid #ececec;border-radius:12px;padding:.75rem 1rem;outline:none;transition:border-color .15s,background .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
 .field input::placeholder,.field textarea::placeholder{color:var(--n400)}
 .field input{height:3.25rem}
 .field textarea{min-height:8.5rem;resize:vertical;line-height:1.5}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--fg);box-shadow:0 0 0 3px rgba(9,11,12,.08)}
+.field input:focus,.field select:focus,.field textarea:focus{background:#fff;border-color:var(--n400);box-shadow:0 0 0 3px rgba(9,11,12,.06)}
 .field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#e40014;box-shadow:0 0 0 3px rgba(228,0,20,.08)}
 .field .err{display:none;font-size:.8125rem;color:#c2000f}
 .field.invalid .err{display:block}
-.row2{display:grid;grid-template-columns:1fr;gap:0 1rem}
-@media (min-width:640px){.row2{grid-template-columns:1fr 1fr}}
+.row2{display:grid;grid-template-columns:1fr;gap:0 1.5rem}
+@media (min-width:640px){.row2{grid-template-columns:1fr 1fr;gap:0 2rem}}
 .pills{display:flex;flex-wrap:wrap;gap:.5rem}
 .pill{position:relative;cursor:pointer}
 .pill input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.pill span{display:inline-flex;align-items:center;height:2.5rem;padding:0 1rem;border:1px solid rgba(9,11,12,.16);border-radius:9999px;font-size:.9375rem;font-weight:500;color:var(--fg);background:#fff;transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
+.pill span{display:inline-flex;align-items:center;height:2.75rem;padding:0 1.125rem;border:1px solid #ececec;border-radius:12px;font-size:.9375rem;font-weight:400;color:var(--fg);background:var(--n100);transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
 .pill:hover span{border-color:rgba(9,11,12,.4)}
 .pill input:checked+span{background:var(--fg);border-color:var(--fg);color:#fff}
 .pill input:focus-visible+span{box-shadow:0 0 0 3px rgba(9,11,12,.15)}
 .field.invalid .pill span{border-color:#e40014}
 .honey{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0}
 .form-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:.5rem}
-.form-actions .btn{height:3rem;padding:0 1.25rem;font-size:1rem}
+.form-actions .btn{height:3.25rem;padding:0 3rem;font-size:1rem;font-weight:600;border-radius:12px;min-width:17rem}
 .form-actions .btn[disabled]{opacity:.6;pointer-events:none}
 .form-status{margin-top:1rem;font-size:.9375rem;color:var(--muted-fg)}
 .form-status:empty{display:none}
@@ -704,14 +704,18 @@ footer{padding-bottom:1rem}
             
             <form id="leadForm" data-subject="Contact enquiry" novalidate>
               <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+              <div class="field" data-required><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="Work email"><span class="err">Enter a valid email address.</span></div>
               <div class="row2">
-                <div class="field" data-required><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Priya Shah"><span class="err">This field is required.</span></div>
-                <div class="field" data-required><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com"><span class="err">Enter a valid email address.</span></div>
+                <div class="field" data-required><label for="first_name">First name</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" placeholder="First name"><span class="err">This field is required.</span></div>
+                <div class="field" data-required><label for="last_name">Last name</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" placeholder="Last name"><span class="err">This field is required.</span></div>
               </div>
-              <div class="field"><label for="company">Company <span class="opt">(optional)</span></label><input id="company" name="company" type="text" autocomplete="organization" placeholder="Northwind Logistics"><span class="err">This field is required.</span></div>
+              <div class="row2">
+                <div class="field"><label for="company">Company <span class="opt">(optional)</span></label><input id="company" name="company" type="text" autocomplete="organization" placeholder="Company name"><span class="err">This field is required.</span></div>
+                <div class="field"><label for="job_title">Job title <span class="opt">(optional)</span></label><input id="job_title" name="job_title" type="text" autocomplete="organization-title" placeholder="Job title"><span class="err">This field is required.</span></div>
+              </div>
               <div class="field" data-required><label for="message">What are you trying to build or fix?</label><textarea id="message" name="message" placeholder="A few lines is plenty: the problem, the systems involved, and where things stand today."></textarea><span class="err">Tell us a little about what you need.</span></div>
               <div class="form-actions">
-                <button class="btn btn-primary" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                <button class="btn btn-primary" type="submit">Send</button>
               </div>
               <p class="form-status" id="formStatus"></p>
             </form>
@@ -806,7 +810,7 @@ footer{padding-bottom:1rem}
     return ok;}
   form.addEventListener("input",function(e){var f=fieldOf(e.target);if(f&&f.classList.contains("invalid"))validate();});
   form.addEventListener("change",function(e){var f=fieldOf(e.target);if(f&&f.classList.contains("invalid"))validate();});
-  function payload(){var o={};new FormData(form).forEach(function(v,k){if(k!=="_honey")o[k]=v;});return o;}
+  function payload(){var o={};new FormData(form).forEach(function(v,k){if(k!=="_honey")o[k]=v;});if(o.first_name||o.last_name)o.name=[o.first_name,o.last_name].filter(Boolean).join(" ");return o;}
   function mailtoFallback(data){var lines=Object.keys(data).filter(function(k){return k.charAt(0)!=="_"&&data[k];}).map(function(k){return k.charAt(0).toUpperCase()+k.slice(1).replace(/_/g," ")+": "+data[k];});
     return "mailto:"+LEAD_EMAIL+"?subject="+encodeURIComponent(data._subject||"New enquiry")+"&body="+encodeURIComponent(lines.join("\n"));}
   form.addEventListener("submit",function(e){e.preventDefault();
