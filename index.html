@@ -110,13 +110,10 @@ kbd{font-family:inherit}
 
 /* ---------- hero ---------- */
 .hero-outer{padding:0}
-.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;background:#06103a url("assets/hero/poster.jpg") center/cover no-repeat;border-radius:0}
+.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;background:#000;border-radius:0}
 .hero::after{content:"";pointer-events:none;position:absolute;inset:0;z-index:20;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;background:transparent}
-.hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;will-change:opacity}
-.hero-video video.on{opacity:1}
-.hero-video::after{content:"";position:absolute;inset:0;background:rgba(6,14,58,.3)}
-.hero-sky-fade{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,14,58,.5) 0%,rgba(6,14,58,.08) 22%,rgba(6,14,58,.1) 50%,rgba(6,14,58,.82) 100%)}
+.hero-flow{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block}
+.hero-sky-fade{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.035),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 62%,rgba(0,0,0,.6) 100%)}
 .hero .badge{background:rgba(10,10,40,.28)}
 .hero .h1{text-shadow:0 2px 28px rgba(10,10,40,.45)}
 /* light-on-dark treatment for everything sitting on the sky */
@@ -607,10 +604,7 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
   <!-- ================= HERO ================= -->
   <div class="hero-outer">
     <div class="hero" id="hero">
-      <div class="hero-video" aria-hidden="true">
-        <video class="hv on" muted playsinline preload="auto" poster="assets/hero/poster.jpg" disablepictureinpicture disableremoteplayback></video>
-        <video class="hv" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback></video>
-      </div>
+      <canvas class="hero-flow" id="flowCanvas" aria-hidden="true"></canvas>
       <div class="hero-sky-fade" aria-hidden="true"></div>
       <nav class="nav" id="heroNav" aria-label="Primary">
         <a class="logo" href="./" aria-label="Zerodash home">
@@ -1415,26 +1409,31 @@ body.lm-locked{overflow:hidden}
   document.getElementById('burger2').addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'});setTimeout(function(){menu.classList.add('open');},350);});
   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
 
-  // ----- hero video playlist (two stacked players, crossfade between clips, endless loop) -----
+  // ----- hero flow canvas (vanilla port of the Gateway Flow effect: bezier lanes with particles converging on the centre) -----
   (function(){
-    var host=document.querySelector('.hero-video');if(!host)return;
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){host.remove();return;}
-    var CLIPS=['assets/hero/clip-7.mp4','assets/hero/clip-4.mp4','assets/hero/clip-5.mp4','assets/hero/clip-8.mp4','assets/hero/clip-9.mp4'];
-    var vids=Array.prototype.slice.call(host.querySelectorAll('video')),cur=0,idx=0,FADE=0.45,switching=false,started=false;
-    function load(v,i){v.src=CLIPS[((i%CLIPS.length)+CLIPS.length)%CLIPS.length];v.load();}
-    function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}
-    function advance(v){if(switching||v!==vids[cur])return;switching=true;var n=vids[1-cur];idx++;play(n);n.classList.add('on');v.classList.remove('on');
-      setTimeout(function(){v.pause();load(v,idx+1);cur=1-cur;switching=false;},FADE*1000+60);}
-    load(vids[0],0);load(vids[1],1);
-    vids[0].addEventListener('canplay',function once(){vids[0].removeEventListener('canplay',once);if(started)return;started=true;play(vids[0]);vids[0].classList.add('on');host.classList.add('live');});
-    vids.forEach(function(v){
-      v.addEventListener('timeupdate',function(){if(v.duration&&v.duration-v.currentTime<=FADE)advance(v);});
-      v.addEventListener('ended',function(){advance(v);});
-      v.addEventListener('error',function(){if(v===vids[cur])advance(v);});
-    });
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=vids[cur];if(e.isIntersecting){if(started)play(v);}else v.pause();});},{threshold:0.02});
-    io.observe(host);
-    document.addEventListener('visibilitychange',function(){if(!started)return;if(document.hidden)vids[cur].pause();else play(vids[cur]);});
+    var canvas=document.getElementById('flowCanvas'),host=document.getElementById('hero');if(!canvas||!host)return;
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ctx=canvas.getContext('2d'),width=0,height=0,dpr=1,paths=[],explosions=[],raf=null,running=false;
+    function build(){var n=Math.max(24,Math.round(80*Math.min(1,width/1400)));paths=[];for(var i=0;i<n;i++)paths.push({isLeft:i%2===0,startY:(i/n)*height*1.4-height*0.2,particles:[{t:Math.random(),speed:0.0015+Math.random()*0.002}]});}
+    function resize(){dpr=Math.min(window.devicePixelRatio||1,2);width=host.clientWidth;height=host.clientHeight;if(!width||!height)return;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);build();if(reduce)render(true);}
+    function bez(t,p0,p1,p2,p3){var u=1-t;return {x:u*u*u*p0.x+3*u*u*t*p1.x+3*u*t*t*p2.x+t*t*t*p3.x,y:u*u*u*p0.y+3*u*u*t*p1.y+3*u*t*t*p2.y+t*t*t*p3.y};}
+    function render(still){ctx.clearRect(0,0,width,height);var cx=width/2,cy=height/2;
+      explosions.forEach(function(e){e.radius+=15;e.life-=0.015;});explosions=explosions.filter(function(e){return e.life>0;});
+      paths.forEach(function(path){var p0={x:path.isLeft?0:width,y:path.startY},p1={x:path.isLeft?cx*0.5:width-cx*0.5,y:path.startY},p2={x:path.isLeft?cx*0.8:width-cx*0.8,y:cy},p3={x:cx,y:cy};
+        ctx.beginPath();ctx.moveTo(p0.x,p0.y);ctx.bezierCurveTo(p1.x,p1.y,p2.x,p2.y,p3.x,p3.y);ctx.strokeStyle='rgba(255,255,255,0.35)';ctx.lineWidth=1.2;ctx.setLineDash([1,4]);ctx.stroke();ctx.setLineDash([]);
+        if(still)return;
+        path.particles.forEach(function(p){p.t+=p.speed;if(p.t>1){p.t=0;path.startY+=(Math.random()-0.5)*10;}var pos=bez(p.t,p0,p1,p2,p3),dx=0,dy=0;
+          explosions.forEach(function(e){var ex=pos.x-e.x,ey=pos.y-e.y,d=Math.hypot(ex,ey)||1;if(d<e.radius+120&&d>e.radius-120){var f=(1-Math.abs(d-e.radius)/120)*e.life;dx+=(ex/d)*f*80;dy+=(ey/d)*f*80;}});
+          ctx.fillStyle='rgba(255,255,255,0.7)';ctx.fillRect(pos.x+dx-1.5,pos.y+dy-1.5,3,3);});});
+      if(!still)raf=requestAnimationFrame(function(){render(false);});}
+    function start(){if(running||reduce)return;running=true;raf=requestAnimationFrame(function(){render(false);});}
+    function stop(){running=false;if(raf)cancelAnimationFrame(raf);raf=null;}
+    host.addEventListener('click',function(e){if(e.target.closest('a,button'))return;var r=host.getBoundingClientRect();explosions.push({x:e.clientX-r.left,y:e.clientY-r.top,radius:0,life:1});});
+    var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(resize,150);});resize();
+    if(reduce)return;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)start();else stop();});},{threshold:0.02});io.observe(host);
+    document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start();});
+    start();
   })();
 
   // ----- reveal on scroll -----

@@ -110,13 +110,10 @@ kbd{font-family:inherit}
 
 /* ---------- hero ---------- */
 .hero-outer{padding:0}
-.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;background:#06103a url("../assets/hero/poster.jpg") center/cover no-repeat;border-radius:0}
+.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;background:#000;border-radius:0}
 .hero::after{content:"";pointer-events:none;position:absolute;inset:0;z-index:20;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;background:transparent}
-.hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;will-change:opacity}
-.hero-video video.on{opacity:1}
-.hero-video::after{content:"";position:absolute;inset:0;background:rgba(6,14,58,.3)}
-.hero-sky-fade{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,14,58,.5) 0%,rgba(6,14,58,.08) 22%,rgba(6,14,58,.1) 50%,rgba(6,14,58,.82) 100%)}
+.hero-flow{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block}
+.hero-sky-fade{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.035),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 62%,rgba(0,0,0,.6) 100%)}
 .hero .badge{background:rgba(10,10,40,.28)}
 .hero .h1{text-shadow:0 2px 28px rgba(10,10,40,.45)}
 /* light-on-dark treatment for everything sitting on the sky */
