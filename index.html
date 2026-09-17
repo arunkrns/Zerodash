@@ -452,8 +452,13 @@ kbd{font-family:inherit}
 @media (min-width:1024px){.twocol-r{aspect-ratio:auto;height:auto;width:42%;flex-shrink:0;align-self:stretch}}
 @media (min-width:1280px){.twocol-r{width:35rem}}
 .twocol-r svg{width:100%;height:100%}
+.twocol{display:block}
+.twocol-r{width:100% !important;aspect-ratio:16/9;height:auto !important;display:flex !important;align-self:auto;border-radius:var(--r-xl);corner-shape:superellipse(var(--sq))}
+@media (min-width:1024px){.twocol-r{aspect-ratio:16/7 !important}}
 
 /* ---------- approach steps ---------- */
+.block.intro{padding-bottom:2.5rem !important}
+.block.intro .lead{max-width:44rem}
 .steps-block{padding-top:0 !important}
 @media (min-width:1024px){.steps.three{grid-template-columns:repeat(3,1fr)}}
 .trust-block{padding:2.5rem 0 !important;border-left:0;border-right:0}
@@ -541,8 +546,8 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 .faq-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
 @media (min-width:1024px){.faq-grid{grid-template-columns:15rem minmax(0,1fr);gap:4rem}}
 @media (min-width:1280px){.faq-grid{grid-template-columns:16rem minmax(0,40rem);gap:6rem}}
-.faq-head .h2{margin-top:.75rem}
-@media (min-width:1024px){.faq-head .h2{font-size:1.875rem;line-height:2.25rem;margin-top:1rem}}
+.faq-head .h2{margin-top:1.5rem}
+
 .faq-head .lead{margin-top:1rem}
 @media (min-width:1024px){.faq-head{position:sticky;top:5rem;align-self:start}}
 .faq-list{border-top:1px solid var(--line)}
@@ -564,13 +569,14 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 .split-char{display:inline-block;will-change:transform,opacity}
 
 /* ---------- industries ---------- */
-.ind-head{padding-bottom:2rem !important}
+.ind-head{padding-bottom:2.5rem !important}
 .ind-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem}
-.ind-head .h2{margin-top:.75rem;font-weight:400}
-@media (min-width:1024px){.ind-head .h2{font-size:min(2.75rem,2.6vw);line-height:1.15;white-space:nowrap}}
+.ind-head-row .h2{max-width:22ch}
+.ind-head .h2{margin-top:0;font-weight:400}
+
 .ind-head-row>div{min-width:0}
 @media (max-width:639px){.ind-head-row{flex-direction:column;align-items:flex-start;gap:1.25rem}.ind-head .h2{max-width:none}}
-.ind-arrows{display:flex;gap:.5rem;flex-shrink:0;padding-bottom:.375rem}
+.ind-arrows{display:flex;gap:.5rem;flex-shrink:0;padding-bottom:.5rem}
 .ind-arrow{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:999px;border:1px solid var(--line-8);background:var(--n50);color:var(--n700);cursor:pointer;padding:0;transition:background .15s,transform .15s,opacity .15s}
 .ind-arrow svg{width:1rem;height:1rem}
 .ind-arrow:hover{background:var(--muted)}
@@ -680,16 +686,12 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
   <section class="section" id="services">
     <div class="wrap">
       <div class="grad-top">
-        <div class="block cap-head">
-          <div class="center">
-            <p class="eyebrow-p"><a class="eyebrow" href="#services">Solutions
+        <div class="block intro">
+          <p class="eyebrow-p"><a class="eyebrow" href="#services">Solutions
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></p>
-            <h2 class="h2"><span>Custom software and agents.</span></h2>
-          </div>
+          <h2 class="h2" style="margin-bottom:1rem">Custom software and agents.</h2>
+          <p class="lead">We start from how your team already works. Products, platforms, automation and the agents inside them. If you can describe it, we can ship it.</p>
         </div>
-      <div class="block cap-copy">
-        <p>We start from how your team already works. Products, platforms, automation and the agents inside them. If you can describe it, we can ship it.</p>
-      </div>
 
       <div class="block cards">
         <div class="cards-in">
@@ -747,7 +749,7 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
   <!-- ================= PROBLEMS ================= -->
   <section class="section" id="problems">
     <div class="wrap">
-      <div class="block">
+      <div class="block intro">
         <p class="eyebrow-p"><a class="eyebrow" href="#problems">How we work
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></p>
         <h2 class="h2" style="margin-bottom:1rem">Tell us your problems.<br>We identify the gaps and build the solutions.</h2>
@@ -766,21 +768,13 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
   <!-- ================= PLATFORM ================= -->
   <section class="section" id="platform">
     <div class="wrap">
-      <div class="block">
+      <div class="block intro">
         <p class="eyebrow-p"><a class="eyebrow" href="#platform">ZeroDash Platform
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></p>
         <h2 class="h2">Connect the tools you already pay for.<br>Build what you need when a tool doesn’t exist.</h2>
       </div>
 
       <div class="block twocol">
-        <div class="twocol-l">
-          <h3 class="h3" data-no-split>One platform.<br><span class="sub">Your tools, your data, your agents.</span></h3>
-          <div class="cta"><a class="btn btn-secondary" href="book/">Book a call</a></div>
-          <ul class="feat">
-            <li><p class="k">Connect</p><p class="d">CRM, ledger, inbox and the tools you already use, plugged in.</p></li>
-            <li><p class="k">Build</p><p class="d">When a tool doesn’t exist, we build it on the same platform.</p></li>
-          </ul>
-        </div>
         <div class="twocol-r" aria-hidden="true">
           <svg viewBox="0 0 560 420" fill="none" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -804,7 +798,7 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
   <!-- ================= FDE ================= -->
   <section class="section" id="fde">
     <div class="wrap">
-      <div class="block">
+      <div class="block intro">
         <p class="eyebrow-p"><a class="eyebrow" href="#fde">Forward Deployed Engineers
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></p>
         <h2 class="h2" style="margin-bottom:1rem">Engineers deployed with your team.</h2>
@@ -903,32 +897,32 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
           </div>
           <div class="faq-list">
             <details class="faq-item" open>
-              <summary><span class="q">Can AI solutions integrate with our existing systems?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Yes. We can integrate AI solutions with your existing enterprise applications, APIs, databases, knowledge systems, IoT platforms, and other data sources.</p>
+              <summary><span class="q">What do you build?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <p class="a">Custom software and AI agents that improve processes, improve workflows, and increase revenue or reduce costs. Products, platforms, automation and the agents inside them.</p>
+            </details>
+            <details class="faq-item">
+              <summary><span class="q">How does an engagement start?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <p class="a">Tell us your problems. We run a short discovery with your team, identify the gaps, and build only what closes them.</p>
+            </details>
+            <details class="faq-item">
+              <summary><span class="q">What is a Forward Deployed Engineer?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <p class="a">An engineer who sits with your team end to end: identifies the problem, tests solutions, builds, and deploys in your stack.</p>
+            </details>
+            <details class="faq-item">
+              <summary><span class="q">Do we have to replace the tools we already use?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <p class="a">No. The ZeroDash Platform connects the tools you already pay for. When a tool doesn’t exist, we build it on the same platform.</p>
+            </details>
+            <details class="faq-item">
+              <summary><span class="q">Which industries do you work in?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <p class="a">Logistics, manufacturing, real estate, e-commerce, retail and customer support. If the problem is operational, it likely fits.</p>
+            </details>
+            <details class="faq-item">
+              <summary><span class="q">How fast will we see something working?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <p class="a">Days for a first working version, not months. We test it with your team and keep shipping after launch.</p>
             </details>
             <details class="faq-item">
               <summary><span class="q">Is our data secure?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Security and data privacy are built into the solution architecture. Access, permissions, data handling, and deployment can be designed around your organization's security and compliance requirements.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">Will it work reliably at scale?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Yes. Solutions are designed with scalability in mind, from an initial proof of concept to production deployments across users, products, business units, and regions.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">How do you ensure AI outputs are accurate and reliable?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">We combine trusted enterprise data, grounding, validation, guardrails, and human oversight where required to make AI outputs more reliable and relevant to your business.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">Can AI work with our specific products and processes?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Yes. AI solutions can be designed around your products, workflows, terminology, business rules, and domain-specific requirements rather than relying solely on generic AI capabilities.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">How quickly can you build and launch?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">We focus on getting a useful version into your hands quickly, not spending months writing a specification. We start with the highest-value problem, build it, test it with your team, and iterate.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">What if we don't have a technical team?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">That's fine. You don't need to know how to build the solution. We handle the technical work and work directly with the people who understand your business.</p>
+              <p class="a">Everything runs in your own cloud accounts with scoped access. You own the code and the data.</p>
             </details>
           </div>
         </div>
