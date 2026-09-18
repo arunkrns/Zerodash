@@ -458,8 +458,9 @@ kbd{font-family:inherit}
 
 /* ---------- approach steps ---------- */
 .block.sec-intro{padding-bottom:2.5rem !important}
-#services .sec-intro{padding-left:1rem !important;padding-right:1rem !important}
-@media (min-width:768px){#services .sec-intro{padding-left:1.5rem !important;padding-right:1.5rem !important}}
+#services .sec-intro,#problems .block,#platform .block,#fde .block,#industries .block{padding-left:1rem !important;padding-right:1rem !important}
+#industries .ind-track-block{--bp:1rem !important}
+@media (min-width:768px){#services .sec-intro,#problems .block,#platform .block,#fde .block,#industries .block{padding-left:1.5rem !important;padding-right:1.5rem !important}#industries .ind-track-block{--bp:1.5rem !important}}
 .block.sec-intro .lead{max-width:44rem}
 .steps-block{padding-top:0 !important}
 @media (min-width:1024px){.steps.three{grid-template-columns:repeat(3,1fr)}}
