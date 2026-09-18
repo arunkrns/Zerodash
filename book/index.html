@@ -452,6 +452,27 @@ kbd{font-family:inherit}
 @media (min-width:1024px){.twocol-r{aspect-ratio:auto;height:auto;width:42%;flex-shrink:0;align-self:stretch}}
 @media (min-width:1280px){.twocol-r{width:35rem}}
 .twocol-r svg{width:100%;height:100%}
+/* ---------- platform hub (vanilla port of the integration visual) ---------- */
+.twocol-r.hub{position:relative;overflow:hidden;background:#f5f5f7;aspect-ratio:1000/440 !important;border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.hub-dots{position:absolute;inset:0;opacity:.18;background-image:radial-gradient(circle,var(--fg) 1px,transparent 1px);background-size:32px 32px}
+.hub-fade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,transparent 22%,transparent 78%,rgba(255,255,255,.7) 100%)}
+.hub-lines{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible}
+.hub-lines path{vector-effect:non-scaling-stroke}
+.hub-run{animation:hub-run 4s linear infinite}
+@keyframes hub-run{from{stroke-dashoffset:366}to{stroke-dashoffset:0}}
+.hub-center{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);padding:.5rem;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:1rem;box-shadow:0 12px 32px -12px rgba(0,0,0,.25),0 1px 2px rgba(0,0,0,.05)}
+.hub-center-in{display:flex;align-items:center;justify-content:center;padding:.625rem;border:1px solid rgba(0,0,0,.08);border-radius:.75rem}
+.twocol-r .hub-logo{width:2.25rem;height:2.25rem;image-rendering:pixelated;display:block}
+.hub-logo path:first-child{display:none}
+.hub-logo path:last-child{fill:var(--fg)}
+.hub-pulse{position:absolute;inset:0;border-radius:1rem;border:2px solid rgba(0,132,204,.25);animation:hub-pulse 3s ease-in-out infinite;pointer-events:none}
+@keyframes hub-pulse{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(1.15);opacity:0}}
+.hub-node{position:absolute;z-index:1;width:3.25rem;height:3.25rem;transform:translate(-50%,-50%) scale(.8);display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:.75rem;box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 16px -8px rgba(0,0,0,.18);color:var(--fg);opacity:0;animation:hub-in .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.1s + var(--i) * .1s)}
+@keyframes hub-in{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.hub-node svg{width:1.5rem;height:1.5rem}
+@media (max-width:767px){.twocol-r.hub{aspect-ratio:1000/640 !important}.hub-node{width:2.5rem;height:2.5rem;border-radius:.625rem}.twocol-r .hub-node svg{width:1.125rem;height:1.125rem}.hub-center{padding:.375rem;border-radius:.75rem}.hub-center-in{padding:.375rem;border-radius:.5rem}.twocol-r .hub-logo{width:1.5rem;height:1.5rem}}
+@media (prefers-reduced-motion:reduce){.hub-run,.hub-pulse{animation:none}.hub-node{opacity:1;transform:translate(-50%,-50%);animation:none}}
+
 .twocol{display:block}
 .twocol-r{width:100% !important;aspect-ratio:16/9;height:auto !important;display:flex !important;align-self:auto;border-radius:var(--r-xl);corner-shape:superellipse(var(--sq))}
 @media (min-width:1024px){.twocol-r{aspect-ratio:16/7 !important}}
