@@ -478,7 +478,7 @@ kbd{font-family:inherit}
   .rail-step.is-active .rail-num{opacity:1;color:var(--fg)}
   .feat-item{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:0;transition:opacity .5s ease}
   .feat-item:not(.is-active){opacity:.3}
-  .feat-visual{position:sticky;top:calc(50vh - 15rem);height:30rem;margin-top:calc(35vh - 15rem);overflow:hidden;border-radius:var(--r-xl)}
+  .feat-visual{position:sticky;top:calc(50vh - 15rem);height:30rem;margin-top:calc(35vh - 15rem);overflow:hidden}
   .feat-pane{position:absolute;inset:0;height:100%;display:flex;align-items:center;margin:0;transform:translateY(103%);transition:transform .7s cubic-bezier(.7,0,.3,1);will-change:transform}
   .feat-pane[data-pane="0"]{transform:none;z-index:1}
   .feat-pane[data-pane="1"]{z-index:2}
@@ -489,6 +489,7 @@ kbd{font-family:inherit}
   .feat-pane .lnode-text{max-width:12rem}.feat-pane .lnode-k{font-size:1rem}
 }
 @media (prefers-reduced-motion:reduce){.feat-item,.feat-pane,.rail-step{transition:none}}
+.twocol-r.hub.fde{border-radius:0;corner-shape:round}
 .hub.fde .hub-runs path{stroke-dasharray:70 930;animation:fde-run 6s linear infinite}
 .hub.fde .hub-runs-glow path{stroke-width:6;opacity:.5}
 @keyframes fde-run{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
@@ -497,8 +498,7 @@ kbd{font-family:inherit}
 .fde-tile{display:flex;align-items:center;justify-content:center;width:3.75rem;height:3.75rem;border-radius:.875rem;background:linear-gradient(180deg,#1b222c,#12181f);border:1px solid rgba(255,255,255,.12);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 10px 24px -12px rgba(0,0,0,.8);color:#e6edf3}
 .fde-tile svg{width:1.75rem;height:1.75rem}
 .fde-k{font-family:var(--display);font-weight:500;font-size:.875rem;color:#e6edf3;letter-spacing:-.01em;white-space:nowrap}
-.fde-cap{position:absolute;left:0;right:0;bottom:1.75rem;text-align:center;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-@media (max-width:767px){.fde-tile{width:2.5rem;height:2.5rem;border-radius:.625rem}.fde-tile svg{width:1.125rem;height:1.125rem}.fde-k{font-size:.6875rem}.fde-num{display:none}.fde-cap{bottom:.75rem;font-size:.625rem}}
+@media (max-width:767px){.fde-tile{width:2.5rem;height:2.5rem;border-radius:.625rem}.fde-tile svg{width:1.125rem;height:1.125rem}.fde-k{font-size:.6875rem}.fde-num{display:none}}
 @media (prefers-reduced-motion:reduce){.hub.fde .hub-runs path{animation:none}.fde-node{opacity:1;animation:none}}
 /* ---------- platform hub (dark) ---------- */
 .plat-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
