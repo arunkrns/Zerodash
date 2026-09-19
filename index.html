@@ -1040,7 +1040,9 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
         /* fit to the band width (cover on narrow screens); the image runs 10% past the band bottom so the skyline and star sit in view */
         var sc=Math.max(w/img.naturalWidth,(h*1.35)/img.naturalHeight),dw=img.naturalWidth*sc,dh=img.naturalHeight*sc,dx=(w-dw)/2,dy=h+dh*0.10-dh;
         var off=document.createElement("canvas");off.width=w;off.height=h;var o=off.getContext("2d",{willReadFrequently:true});
-        o.drawImage(img,dx,dy,dw,dh);var d;try{d=o.getImageData(0,0,w,h).data;}catch(e){fallback();return;}
+        o.drawImage(img,dx,dy,dw,dh);
+        o.fillStyle="#000";o.beginPath();o.arc(dx+dw*0.501,dy+dh*0.515,dw*0.05,0,6.2832);o.fill(); /* mask the star */
+        var d;try{d=o.getImageData(0,0,w,h).data;}catch(e){fallback();return;}
         var P=Math.max(4,Math.round(7*dpr)),T=Math.max(2,Math.round(P*0.52)),S=Math.max(1,Math.round(2*dpr)),MIN=Math.round(3*dpr),lo=0.42,hi=0.8;
         ctx.clearRect(0,0,w,h);ctx.fillStyle=COL;
         for(var y=Math.floor(P/2),row=0;y<h;y+=P,row++){
