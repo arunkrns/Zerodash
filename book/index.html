@@ -452,6 +452,32 @@ kbd{font-family:inherit}
 @media (min-width:1024px){.twocol-r{aspect-ratio:auto;height:auto;width:42%;flex-shrink:0;align-self:stretch}}
 @media (min-width:1280px){.twocol-r{width:35rem}}
 .twocol-r svg{width:100%;height:100%}
+
+/* ---------- platform + FDE scroll feature ---------- */
+.feat{display:flex;flex-direction:column;gap:0}
+.feat-text,.feat-visual{display:contents}
+.feat-item{order:0;padding-bottom:2rem}
+.feat-item .h2{margin-bottom:1rem}
+.feat-item .lead{max-width:30rem}
+.feat-item[data-feat="0"]{order:1}
+.feat-pane[data-pane="0"]{order:2;margin-bottom:4rem}
+.feat-item[data-feat="1"]{order:3}
+.feat-pane[data-pane="1"]{order:4}
+.feat-pane .loop-stage{padding:4rem 1.5rem}
+.feat-pane .loop-wrap{max-width:none}
+@media (min-width:1024px){
+  .feat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:5rem;align-items:start}
+  .feat-text,.feat-visual{display:block}
+  .feat-item{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:0;transition:opacity .5s ease}
+  .feat-item:not(.is-active){opacity:.3}
+  .feat-visual{position:sticky;top:calc(50vh - 15rem);height:30rem}
+  .feat-pane{position:absolute;inset:0;display:flex;align-items:center;margin:0;opacity:0;transform:translateY(18px) scale(.985);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+  .feat-pane.on{opacity:1;transform:none;pointer-events:auto}
+  .feat-pane>*{width:100%}
+  .feat-pane .loop-stage{padding:3.5rem 2.5rem}
+  .feat-pane .lnode-text{max-width:12rem}.feat-pane .lnode-k{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){.feat-item{transition:none}.feat-pane{transition:none}}
 /* ---------- platform hub (dark) ---------- */
 .plat-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
 .plat-text .h2{margin-bottom:1rem}
@@ -488,9 +514,9 @@ kbd{font-family:inherit}
 
 /* ---------- approach steps ---------- */
 .block.sec-intro{padding-bottom:2.5rem !important}
-#services .sec-intro,#problems .block,#platform .block,#fde .block,#industries .block{padding-left:1rem !important;padding-right:1rem !important}
+#services .sec-intro,#problems .block,#platform .block,#industries .block{padding-left:1rem !important;padding-right:1rem !important}
 #industries .ind-track-block{--bp:1rem !important}
-@media (min-width:768px){#services .sec-intro,#problems .block,#platform .block,#fde .block,#industries .block{padding-left:1.5rem !important;padding-right:1.5rem !important}#industries .ind-track-block{--bp:1.5rem !important}}
+@media (min-width:768px){#services .sec-intro,#problems .block,#platform .block,#industries .block{padding-left:1.5rem !important;padding-right:1.5rem !important}#industries .ind-track-block{--bp:1.5rem !important}}
 .block.sec-intro .lead{max-width:44rem}
 .steps-block{padding-top:0 !important}
 .figs{display:grid;grid-template-columns:1fr}
