@@ -478,7 +478,7 @@ kbd{font-family:inherit}
   .rail-step.is-active .rail-num{opacity:1;color:var(--fg)}
   .feat-item{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:0;transition:opacity .5s ease}
   .feat-item:not(.is-active){opacity:.3}
-  .feat-visual{position:sticky;top:calc(50vh - 15rem);height:30rem;margin-top:calc(35vh - 15rem);overflow:hidden}
+  .feat-visual{position:sticky;top:calc(50vh - 15rem);height:30rem;margin-top:calc(35vh - 15rem);overflow:hidden;border-radius:12px}
   .feat-pane{position:absolute;inset:0;height:100%;display:flex;align-items:center;margin:0;transform:translateY(103%);transition:transform .7s cubic-bezier(.7,0,.3,1);will-change:transform}
   .feat-pane[data-pane="0"]{transform:none;z-index:1}
   .feat-pane[data-pane="1"]{z-index:2}
@@ -489,7 +489,6 @@ kbd{font-family:inherit}
   .feat-pane .lnode-text{max-width:12rem}.feat-pane .lnode-k{font-size:1rem}
 }
 @media (prefers-reduced-motion:reduce){.feat-item,.feat-pane,.rail-step{transition:none}}
-.twocol-r.hub.fde{border-radius:0;corner-shape:round}
 .hub.fde .hub-runs path{stroke-dasharray:70 930;animation:fde-run 6s linear infinite}
 .hub.fde .hub-runs-glow path{stroke-width:6;opacity:.5}
 @keyframes fde-run{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
@@ -506,7 +505,7 @@ kbd{font-family:inherit}
 .plat-text .lead{max-width:30rem}
 @media (min-width:1024px){.plat-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:4rem}}
 @media (min-width:1280px){.plat-grid{gap:5rem}}
-.twocol-r.hub{position:relative;overflow:hidden;background:#0b0f14;aspect-ratio:1000/640 !important;width:100% !important;border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.twocol-r.hub{position:relative;overflow:hidden;background:#0b0f14;aspect-ratio:1000/640 !important;width:100% !important;border-radius:12px;corner-shape:round;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 .hub-dots{position:absolute;inset:0;opacity:.35;background-image:radial-gradient(circle,rgba(255,255,255,.22) 1px,transparent 1px);background-size:28px 28px}
 .hub-glow{position:absolute;inset:0;background:radial-gradient(38% 60% at 50% 50%,rgba(255,255,255,.14),transparent 70%)}
 .hub-fade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,15,20,.85) 0%,transparent 22%,transparent 78%,rgba(11,15,20,.85) 100%)}
