@@ -483,11 +483,23 @@ kbd{font-family:inherit}
   .feat-pane[data-pane="0"]{transform:none;z-index:1}
   .feat-pane[data-pane="1"]{z-index:2}
   .feat-pane.on{transform:none}
-  .feat-pane>*{width:100%}
+  .feat-pane>*{width:100%;height:100%}
+  .feat-pane .twocol-r.hub{aspect-ratio:auto !important;height:100%}
   .feat-pane .loop-stage{padding:3.5rem 2.5rem}
   .feat-pane .lnode-text{max-width:12rem}.feat-pane .lnode-k{font-size:1rem}
 }
 @media (prefers-reduced-motion:reduce){.feat-item,.feat-pane,.rail-step{transition:none}}
+.hub.fde .hub-runs path{stroke-dasharray:70 930;animation:fde-run 6s linear infinite}
+.hub.fde .hub-runs-glow path{stroke-width:6;opacity:.5}
+@keyframes fde-run{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+.fde-node{position:absolute;top:50%;z-index:1;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.75rem;width:max-content;opacity:0;animation:hub-in .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.15s + var(--i) * .12s)}
+.fde-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.6875rem;letter-spacing:.12em;color:rgba(255,255,255,.45)}
+.fde-tile{display:flex;align-items:center;justify-content:center;width:3.75rem;height:3.75rem;border-radius:.875rem;background:linear-gradient(180deg,#1b222c,#12181f);border:1px solid rgba(255,255,255,.12);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 10px 24px -12px rgba(0,0,0,.8);color:#e6edf3}
+.fde-tile svg{width:1.75rem;height:1.75rem}
+.fde-k{font-family:var(--display);font-weight:500;font-size:.875rem;color:#e6edf3;letter-spacing:-.01em;white-space:nowrap}
+.fde-cap{position:absolute;left:0;right:0;bottom:1.75rem;text-align:center;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+@media (max-width:767px){.fde-tile{width:2.5rem;height:2.5rem;border-radius:.625rem}.fde-tile svg{width:1.125rem;height:1.125rem}.fde-k{font-size:.6875rem}.fde-num{display:none}.fde-cap{bottom:.75rem;font-size:.625rem}}
+@media (prefers-reduced-motion:reduce){.hub.fde .hub-runs path{animation:none}.fde-node{opacity:1;animation:none}}
 /* ---------- platform hub (dark) ---------- */
 .plat-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
 .plat-text .h2{margin-bottom:1rem}
