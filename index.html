@@ -610,9 +610,9 @@ kbd{font-family:inherit}
 @media (min-width:1280px){.pad-bottom{padding-bottom:6rem !important}}
 
 /* ---------- CTA + footer ---------- */
-.cta-wrap{width:100%;margin:0 auto;padding:3.5rem 0 0}
-@media (min-width:640px){.cta-wrap{padding:4rem 0 0}}
-@media (min-width:1280px){.cta-wrap{padding:6rem 0 0}}
+.cta-wrap{width:100%;margin:0 auto;padding:3.5rem 0}
+@media (min-width:640px){.cta-wrap{padding:4rem 0}}
+@media (min-width:1280px){.cta-wrap{padding:6rem 0}}
 .banner{border-radius:var(--r-2xl);corner-shape:superellipse(var(--sq));background:#0b1d3a url("assets/cta-rider.jpg") center 36%/cover no-repeat;min-height:40rem;display:flex;flex-direction:column;align-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);padding:4rem 1.5rem;text-align:center;position:relative;overflow:hidden;color:#fff}
 .banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,30,.18) 0%,rgba(4,10,30,.42) 60%,rgba(4,10,30,.6) 100%);pointer-events:none}
 .banner .h2{color:#fff;text-shadow:0 2px 24px rgba(4,10,30,.5)}
@@ -661,33 +661,7 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 @media (min-width:640px){footer{padding-bottom:1.25rem}}
 @media (min-width:1280px){footer{padding-bottom:1.5rem}}
 
-/* ---------- FAQ ---------- */
-.faq-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:3.5rem}
-@media (min-width:640px){.faq-wrap{margin-top:4rem}}
-@media (min-width:1280px){.faq-wrap{margin-top:6rem}}
-.faq-block{padding-left:1.5rem !important;padding-right:1.5rem !important}
-@media (min-width:640px){.faq-block{padding-left:2rem !important;padding-right:2rem !important}}
-@media (min-width:768px){.faq-block{padding-left:3.5rem !important;padding-right:3.5rem !important}}
-@media (min-width:1280px){.faq-block{padding-left:6rem !important;padding-right:6rem !important}}
-.faq-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
-@media (min-width:1024px){.faq-grid{grid-template-columns:15rem minmax(0,1fr);gap:4rem}}
-@media (min-width:1280px){.faq-grid{grid-template-columns:16rem minmax(0,40rem);gap:6rem}}
-.faq-head .h2{margin-top:1.5rem}
 
-.faq-head .lead{margin-top:1rem}
-@media (min-width:1024px){.faq-head{position:sticky;top:5rem;align-self:start}}
-.faq-list{border-top:1px solid var(--line)}
-.faq-item{border-bottom:1px solid var(--line)}
-.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;padding:1.25rem 0;font-family:var(--display);font-size:1rem;font-weight:500;color:var(--fg);outline:none}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary:focus-visible{box-shadow:0 0 0 3px rgba(161,161,161,.5);border-radius:6px}
-.faq-item summary .q{flex:1}
-.faq-item summary .ic{flex-shrink:0;width:1.5rem;height:1.5rem;margin-top:.0625rem;border-radius:9999px;background:var(--muted);color:var(--muted-fg);display:flex;align-items:center;justify-content:center;transition:transform .25s cubic-bezier(.2,.7,.2,1),background .15s}
-.faq-item summary .ic svg{width:.875rem;height:.875rem}
-.faq-item summary:hover .ic{background:#ececec}
-.faq-item[open] summary .ic{transform:rotate(45deg);background:var(--fg);color:#fff}
-.faq-item .a{color:var(--muted-fg);font-size:.9375rem;line-height:1.6;padding:0 3rem 1.25rem 0;max-width:36rem;margin-top:-.25rem}
-@media (min-width:1024px){.faq-item summary{font-size:1.125rem;padding:1.5rem 0}.faq-item .a{font-size:1rem;padding-bottom:1.5rem;margin-top:-.375rem}}
 
 /* split-text headings */
 .split-parent{display:inline-block;overflow:hidden;white-space:normal;overflow-wrap:break-word;will-change:transform,opacity;vertical-align:top}
@@ -977,52 +951,6 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
       </div>
     </div>
   </div>
-
-  <!-- ================= FAQ ================= -->
-  <section class="faq-wrap" id="faq" aria-labelledby="faqTitle">
-    <div class="wrap">
-      <div class="block faq-block">
-        <div class="faq-grid">
-          <div class="faq-head">
-            <a class="eyebrow" href="#faq">FAQ
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a>
-            <h2 class="h2" id="faqTitle" data-no-split>Questions, answered.</h2>
-            <p class="lead">Anything else, <a class="inline-link" href="book/">book a call</a>.</p>
-          </div>
-          <div class="faq-list">
-            <details class="faq-item" open>
-              <summary><span class="q">What do you build?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Custom software and AI agents that improve processes, improve workflows, and increase revenue or reduce costs. Products, platforms, automation and the agents inside them.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">How does an engagement start?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Tell us your problems. We run a short discovery with your team, identify the gaps, and build only what closes them.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">What is a Forward Deployed Engineer?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">An engineer who sits with your team end to end: identifies the problem, tests solutions, builds, and deploys in your stack.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">Do we have to replace the tools we already use?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">No. The ZeroDash Platform connects the tools you already pay for. When a tool doesn’t exist, we build it on the same platform.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">Which industries do you work in?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Logistics, manufacturing, real estate, e-commerce, retail and customer support. If the problem is operational, it likely fits.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">How fast will we see something working?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Days for a first working version, not months. We test it with your team and keep shipping after launch.</p>
-            </details>
-            <details class="faq-item">
-              <summary><span class="q">Is our data secure?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <p class="a">Everything runs in your own cloud accounts with scoped access. You own the code and the data.</p>
-            </details>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ================= FOOTER ================= -->
   <footer>
