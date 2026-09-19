@@ -713,7 +713,7 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 .ind-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .ind-logistics .ind-img{object-position:center 80%}
 .ind-card:hover .ind-img{transform:scale(1.04)}
-.ind-card::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.12) 40%,rgba(0,0,0,0) 60%,rgba(0,0,0,.3) 100%)}
+.ind-card::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%)}
 .ind-title{position:absolute;z-index:2;left:1.5rem;top:1.375rem;right:4.5rem;margin:0;font-family:var(--display);font-weight:400;font-size:1.375rem;line-height:1.25;letter-spacing:-.01em;color:#fff;max-width:18ch;text-shadow:0 1px 12px rgba(0,0,0,.25)}
 @media (min-width:768px){.ind-title{left:2rem;top:2rem;right:5rem;font-size:1.625rem}}
 @media (min-width:1280px){.ind-title{left:2.25rem;top:2.125rem;font-size:1.875rem}}
@@ -721,8 +721,8 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 @media (min-width:768px){.ind-go{right:2rem;top:2rem}}
 .ind-go svg{width:100%;height:100%}
 .ind-card:hover .ind-go{transform:translate(3px,-3px)}
-.ind-tag{position:absolute;z-index:2;right:1.5rem;bottom:1.375rem;font-size:.9375rem;font-weight:500;color:#fff;letter-spacing:-.005em;text-shadow:0 1px 10px rgba(0,0,0,.35)}
-@media (min-width:768px){.ind-tag{right:2rem;bottom:1.75rem;font-size:1.0625rem}}
+.ind-tag{position:absolute;z-index:2;left:1.5rem;bottom:1.375rem;font-family:var(--display);font-size:1.5rem;line-height:1.15;font-weight:500;letter-spacing:-.02em;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+@media (min-width:768px){.ind-tag{left:2rem;bottom:1.75rem;font-size:1.875rem}}
 .ind-card.in:hover{transform:none}
 </style>
 </head>
@@ -975,38 +975,26 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
         <div class="ind-track" data-ind-track>
           <a class="ind-card ind-logistics" href="book/" data-reveal>
             <img class="ind-img" src="assets/ind-logistics.jpg" alt="" loading="lazy" decoding="async">
-            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-            <h3 class="ind-title">Dispatch that reroutes itself when the day changes</h3>
             <span class="ind-tag">Logistics</span>
           </a>
           <a class="ind-card ind-manufacturing" href="book/" data-reveal style="transition-delay:.05s">
             <img class="ind-img" src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-            <h3 class="ind-title">Fewer surprises on the floor</h3>
             <span class="ind-tag">Manufacturing</span>
           </a>
           <a class="ind-card ind-realestate" href="book/" data-reveal style="transition-delay:.10s">
             <img class="ind-img" src="https://images.unsplash.com/photo-1624204386084-dd8c05e32226?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-            <h3 class="ind-title">Listings, viewings and paperwork that keep pace with buyers</h3>
             <span class="ind-tag">Real Estate</span>
           </a>
           <a class="ind-card ind-ecommerce" href="book/" data-reveal style="transition-delay:.15s">
             <img class="ind-img" src="https://images.unsplash.com/photo-1726137569911-bc03e55fd87f?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-            <h3 class="ind-title">Orders, returns and stock in sync across every channel</h3>
             <span class="ind-tag">E-commerce</span>
           </a>
           <a class="ind-card ind-retail" href="book/" data-reveal style="transition-delay:.20s">
             <img class="ind-img" src="https://images.unsplash.com/photo-1787209516537-a8e66a1b4360?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-            <h3 class="ind-title">Shelves, staff and stock aligned to what actually sells</h3>
             <span class="ind-tag">Retail</span>
           </a>
           <a class="ind-card ind-support" href="book/" data-reveal style="transition-delay:.25s">
             <img class="ind-img" src="https://images.unsplash.com/photo-1626863905121-3b0c0ed7b94c?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" decoding="async">
-            <span class="ind-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
-            <h3 class="ind-title">Support that resolves, not just replies</h3>
             <span class="ind-tag">Customer Support</span>
           </a>
         </div>
