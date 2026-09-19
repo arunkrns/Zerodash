@@ -624,20 +624,20 @@ kbd{font-family:inherit}
 .banner .h2{margin-bottom:2rem;padding-top:1rem}
 @media (min-width:640px){.banner .h2{margin-bottom:2.5rem;padding-top:1rem}}
 @media (max-width:639px){.banner{background-position:center 30%;padding:3.5rem 1.5rem 16rem}}
-footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(88vh,58rem);padding:0 0 1.5rem;background:var(--bg);color:var(--fg)}
+footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(80vh,54rem);padding:8rem 0 1.5rem;background:var(--bg);color:var(--fg)}
 .foot-bg{display:none}
-.foot-art{position:relative;flex:1 1 auto;min-height:23rem;overflow:hidden;pointer-events:none;user-select:none}
-.foot-art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14%;background:linear-gradient(180deg,rgba(255,255,255,0),#fff)}
+.foot-art{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;user-select:none}
+.foot-art::after{content:"";position:absolute;left:0;right:0;top:0;height:30%;background:linear-gradient(180deg,#fff,rgba(255,255,255,0))}
 .foot-raster{position:absolute;inset:0;width:100%;height:100%;display:block}
-.foot-raster-img{display:none;position:absolute;left:0;right:0;bottom:-10%;width:100%;height:auto;min-height:135%;object-fit:cover;object-position:center bottom}
+.foot-raster-img{display:none;position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;min-height:145%;object-fit:cover;object-position:center bottom}
 .foot-art.static .foot-raster{display:none}.foot-art.static .foot-raster-img{display:block}
 @media (min-width:640px){footer{padding:0}}
 @media (min-width:1280px){footer{padding:0}}
-.foot-cols{padding:1rem 0 1.5rem}
+.foot-cols{padding:0 0 1.5rem}
 @media (min-width:640px){.foot-cols{padding-bottom:2rem}}
 .foot-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:3rem;row-gap:1.25rem}
 .foot-col-right{margin-left:auto}
-.foot-col{min-width:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:1.5rem;row-gap:.5rem;font-size:.875rem;font-weight:500}
+.foot-col{min-width:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:1.5rem;row-gap:.5rem;font-size:.875rem;font-weight:500;text-shadow:0 0 3px #fff,0 0 6px #fff,0 0 10px #fff}
 .foot-col .hd{color:var(--muted-fg);margin-right:.25rem}
 .foot-col ul{display:flex;flex-wrap:wrap;align-items:center;column-gap:1.5rem;row-gap:.5rem}
 .foot-col ul.loose{gap:.75rem}
@@ -645,11 +645,11 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 .foot-col a:hover{color:var(--muted-fg);text-decoration-line:underline}
 .foot-bottom{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:1rem}
 @media (min-width:640px){.foot-bottom{flex-direction:row;align-items:center}}
-.foot-bottom p{color:var(--muted-fg);font-size:.875rem}
-.socials{color:var(--muted-fg);display:inline-flex;align-items:center;gap:.5rem}
+.foot-bottom p{color:var(--n900);font-size:.875rem;text-shadow:0 0 3px #fff,0 0 6px #fff,0 0 10px #fff}
+.socials{color:var(--n900);display:inline-flex;align-items:center;gap:.5rem;filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff)}
 .socials svg{width:1.25rem;height:1.25rem}
 .socials a:hover{color:var(--fg)}
-@media (max-width:639px){footer{min-height:min(62vh,40rem);padding-top:0}.foot-art{min-height:14rem}.foot-grid{flex-direction:column;align-items:flex-start;row-gap:.875rem}.foot-col-right{margin-left:0}.foot-col ul{column-gap:1.25rem}}
+@media (max-width:639px){footer{min-height:min(62vh,40rem);padding-top:0}.foot-grid{flex-direction:column;align-items:flex-start;row-gap:.875rem}.foot-col-right{margin-left:0}.foot-col ul{column-gap:1.25rem}}
 @media (min-width:640px) and (max-width:1023px){footer{min-height:min(68vh,46rem)}}
 .foot-mark{margin-top:2.5rem;line-height:0}
 @media (min-width:768px){.foot-mark{margin-top:3.5rem}}
@@ -1036,10 +1036,12 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
       function render(){
         var dpr=Math.min(window.devicePixelRatio||1,2),W=foot.clientWidth,H=foot.clientHeight;if(!W||!H||!img.naturalWidth)return;
         var w=Math.round(W*dpr),h=Math.round(H*dpr);c.width=w;c.height=h;
-        /* fit to the band width (cover on narrow screens); the image runs 10% past the band bottom so the skyline and star sit in view */
-        var sc=Math.max(w/img.naturalWidth,(h*1.35)/img.naturalHeight),dw=img.naturalWidth*sc,dh=img.naturalHeight*sc,dx=(w-dw)/2,dy=h+dh*0.10-dh;
+        /* cover the footer, anchored to its bottom edge so the skyline rises from the bottom */
+        var sc=Math.max(w/img.naturalWidth,(h*1.45)/img.naturalHeight),dw=img.naturalWidth*sc,dh=img.naturalHeight*sc,dx=(w-dw)/2,dy=h-dh;
         var off=document.createElement("canvas");off.width=w;off.height=h;var o=off.getContext("2d",{willReadFrequently:true});
-        o.drawImage(img,dx,dy,dw,dh);var d;try{d=o.getImageData(0,0,w,h).data;}catch(e){fallback();return;}
+        o.drawImage(img,dx,dy,dw,dh);
+        o.fillStyle="#000";o.beginPath();o.arc(dx+dw*0.501,dy+dh*0.515,dw*0.05,0,6.2832);o.fill(); /* mask the star */
+        var d;try{d=o.getImageData(0,0,w,h).data;}catch(e){fallback();return;}
         var P=Math.max(4,Math.round(7*dpr)),T=Math.max(2,Math.round(P*0.52)),S=Math.max(1,Math.round(2*dpr)),MIN=Math.round(3*dpr),lo=0.42,hi=0.8;
         ctx.clearRect(0,0,w,h);ctx.fillStyle=COL;
         for(var y=Math.floor(P/2),row=0;y<h;y+=P,row++){
