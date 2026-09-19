@@ -629,6 +629,8 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
 .foot-art{position:relative;flex:1 1 auto;min-height:23rem;overflow:hidden;pointer-events:none;user-select:none}
 .foot-art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14%;background:linear-gradient(180deg,rgba(255,255,255,0),#fff)}
 .foot-raster{position:absolute;inset:0;width:100%;height:100%;display:block}
+.foot-raster-img{display:none;position:absolute;left:0;right:0;bottom:-10%;width:100%;height:auto;min-height:135%;object-fit:cover;object-position:center bottom}
+.foot-art.static .foot-raster{display:none}.foot-art.static .foot-raster-img{display:block}
 @media (min-width:640px){footer{padding:0}}
 @media (min-width:1280px){footer{padding:0}}
 .foot-cols{padding:1rem 0 1.5rem}
@@ -876,10 +878,13 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
     <img class="foot-bg" src="../assets/footer-city.jpg" alt="" loading="lazy" decoding="async">
     <div class="foot-art" aria-hidden="true">
     <canvas class="foot-raster" id="footRaster"></canvas>
+    <img class="foot-raster-img" src="../assets/footer-raster.png" alt="" loading="lazy" decoding="async">
     <script>
     (function(){
-      var c=document.getElementById("footRaster"),im=document.querySelector(".foot-bg");if(!c||!c.getContext||!im)return;
-      var ctx=c.getContext("2d"),foot=c.parentNode,img=new Image(),rt,COL="#8b5cf6";
+      var c=document.getElementById("footRaster"),im=document.querySelector(".foot-bg"),foot=c&&c.parentNode;
+      function fallback(){if(foot)foot.classList.add("static");}
+      if(!c||!c.getContext||!im){fallback();return;}
+      var ctx=c.getContext("2d"),img=new Image(),rt,COL="#8b5cf6";
       function hsh(a,b){var n=Math.sin(a*127.1+b*311.7)*43758.5453;return (n-Math.floor(n))*2-1;}
       function n1(t,r){var i=Math.floor(t),f=t-i;f=f*f*(3-2*f);return hsh(i,r)*(1-f)+hsh(i+1,r)*f;}
       function render(){
@@ -888,7 +893,7 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
         /* fit to the band width (cover on narrow screens); the image runs 10% past the band bottom so the skyline and star sit in view */
         var sc=Math.max(w/img.naturalWidth,(h*1.35)/img.naturalHeight),dw=img.naturalWidth*sc,dh=img.naturalHeight*sc,dx=(w-dw)/2,dy=h+dh*0.10-dh;
         var off=document.createElement("canvas");off.width=w;off.height=h;var o=off.getContext("2d",{willReadFrequently:true});
-        o.drawImage(img,dx,dy,dw,dh);var d=o.getImageData(0,0,w,h).data;
+        o.drawImage(img,dx,dy,dw,dh);var d;try{d=o.getImageData(0,0,w,h).data;}catch(e){fallback();return;}
         var P=Math.max(4,Math.round(7*dpr)),T=Math.max(2,Math.round(P*0.52)),S=Math.max(1,Math.round(2*dpr)),MIN=Math.round(3*dpr),lo=0.42,hi=0.8;
         ctx.clearRect(0,0,w,h);ctx.fillStyle=COL;
         for(var y=Math.floor(P/2),row=0;y<h;y+=P,row++){
@@ -901,7 +906,7 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
           }
         }
       }
-      img.onload=render;img.src=im.currentSrc||im.src;
+      img.onload=render;img.onerror=fallback;img.src=im.currentSrc||im.src;
       addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(render,150);});
     })();
     </script>
