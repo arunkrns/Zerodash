@@ -453,7 +453,12 @@ kbd{font-family:inherit}
 @media (min-width:1280px){.twocol-r{width:35rem}}
 .twocol-r svg{width:100%;height:100%}
 /* ---------- platform hub (dark) ---------- */
-.twocol-r.hub{position:relative;overflow:hidden;background:#0b0f14;aspect-ratio:1000/440 !important;border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.plat-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+.plat-text .h2{margin-bottom:1rem}
+.plat-text .lead{max-width:30rem}
+@media (min-width:1024px){.plat-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:4rem}}
+@media (min-width:1280px){.plat-grid{gap:5rem}}
+.twocol-r.hub{position:relative;overflow:hidden;background:#0b0f14;aspect-ratio:1000/640 !important;width:100% !important;border-radius:var(--r-xl);corner-shape:superellipse(var(--sq));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 .hub-dots{position:absolute;inset:0;opacity:.35;background-image:radial-gradient(circle,rgba(255,255,255,.22) 1px,transparent 1px);background-size:28px 28px}
 .hub-glow{position:absolute;inset:0;background:radial-gradient(38% 60% at 50% 50%,rgba(255,255,255,.14),transparent 70%)}
 .hub-fade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,15,20,.85) 0%,transparent 22%,transparent 78%,rgba(11,15,20,.85) 100%)}
@@ -473,6 +478,7 @@ kbd{font-family:inherit}
 .hub-node{position:absolute;z-index:1;width:3.75rem;height:3.75rem;transform:translate(-50%,-50%) scale(.8);display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#1b222c,#12181f);border:1px solid rgba(255,255,255,.12);border-radius:.75rem;box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 10px 24px -12px rgba(0,0,0,.8);color:#e6edf3;opacity:0;animation:hub-in .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.1s + var(--i) * .08s)}
 @keyframes hub-in{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 .twocol-r .hub-node svg{width:1.875rem;height:1.875rem}
+@media (min-width:1024px){.twocol-r.hub{aspect-ratio:1000/760 !important}}
 @media (max-width:767px){.twocol-r.hub{aspect-ratio:1000/640 !important}.hub-node{width:2.75rem;height:2.75rem;border-radius:.625rem}.twocol-r .hub-node svg{width:1.375rem;height:1.375rem}.hub-center{padding:.375rem;border-radius:.75rem}.hub-center-in{padding:.375rem;border-radius:.5rem}.twocol-r .hub-logo{width:1.5rem;height:1.5rem}}
 @media (prefers-reduced-motion:reduce){.hub-runs path,.hub-pulse{animation:none}.hub-node{opacity:1;transform:translate(-50%,-50%);animation:none}}
 
@@ -834,14 +840,13 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
   <!-- ================= PLATFORM ================= -->
   <section class="section" id="platform">
     <div class="wrap">
-      <div class="block sec-intro">
+      <div class="block plat-grid">
+        <div class="plat-text">
         <p class="eyebrow-p"><a class="eyebrow" href="#platform">ZeroDash Platform
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></p>
         <h2 class="h2" style="margin-bottom:1rem">One platform for your tools, data and agents.</h2>
         <p class="lead">Connect the tools you already pay for, and when a tool doesn’t exist, we build what you need on the same platform.</p>
-      </div>
-
-      <div class="block twocol">
+        </div>
         <div class="twocol-r hub" aria-hidden="true">
           <div class="hub-dots"></div>
           <div class="hub-glow"></div>
