@@ -456,6 +456,7 @@ kbd{font-family:inherit}
 /* ---------- platform + FDE scroll feature ---------- */
 .feat{display:flex;flex-direction:column;gap:0}
 .feat-text,.feat-visual{display:contents}
+.feat-rail{display:none}
 .feat-item{order:0;padding-bottom:2rem}
 .feat-item .h2{margin-bottom:1rem}
 .feat-item .lead{max-width:30rem}
@@ -466,18 +467,27 @@ kbd{font-family:inherit}
 .feat-pane .loop-stage{padding:4rem 1.5rem}
 .feat-pane .loop-wrap{max-width:none}
 @media (min-width:1024px){
-  .feat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:5rem;align-items:start}
+  .feat{display:grid;grid-template-columns:3rem minmax(0,5fr) minmax(0,7fr);column-gap:2rem;align-items:start}
   .feat-text,.feat-visual{display:block}
+  .feat-rail{display:flex;flex-direction:column;gap:1rem;position:sticky;top:calc(50vh - 4rem);height:8rem;justify-content:center;margin-top:calc(35vh - 4rem)}
+  .rail-step{display:flex;align-items:flex-start;gap:.75rem;height:1rem;transition:height .5s cubic-bezier(.65,0,.35,1)}
+  .rail-step.is-active{height:4.5rem}
+  .rail-line{display:block;width:2px;height:100%;border-radius:2px;background:var(--n300);transition:background .3s}
+  .rail-step.is-active .rail-line{background:var(--fg)}
+  .rail-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.6875rem;letter-spacing:.08em;color:var(--muted-fg);opacity:0;transition:opacity .3s;line-height:1}
+  .rail-step.is-active .rail-num{opacity:1;color:var(--fg)}
   .feat-item{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:0;transition:opacity .5s ease}
   .feat-item:not(.is-active){opacity:.3}
-  .feat-visual{position:sticky;top:calc(50vh - 15rem);height:30rem}
-  .feat-pane{position:absolute;inset:0;display:flex;align-items:center;margin:0;opacity:0;transform:translateY(18px) scale(.985);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:none}
-  .feat-pane.on{opacity:1;transform:none;pointer-events:auto}
+  .feat-visual{position:sticky;top:calc(50vh - 15rem);height:30rem;margin-top:calc(35vh - 15rem);overflow:hidden;border-radius:var(--r-xl)}
+  .feat-pane{position:absolute;inset:0;display:flex;align-items:center;margin:0;transform:translateY(103%);transition:transform .7s cubic-bezier(.7,0,.3,1);will-change:transform}
+  .feat-pane[data-pane="0"]{transform:none;z-index:1}
+  .feat-pane[data-pane="1"]{z-index:2}
+  .feat-pane.on{transform:none}
   .feat-pane>*{width:100%}
   .feat-pane .loop-stage{padding:3.5rem 2.5rem}
   .feat-pane .lnode-text{max-width:12rem}.feat-pane .lnode-k{font-size:1rem}
 }
-@media (prefers-reduced-motion:reduce){.feat-item{transition:none}.feat-pane{transition:none}}
+@media (prefers-reduced-motion:reduce){.feat-item,.feat-pane,.rail-step{transition:none}}
 /* ---------- platform hub (dark) ---------- */
 .plat-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
 .plat-text .h2{margin-bottom:1rem}
@@ -868,6 +878,10 @@ footer{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-dir
   <section class="section" id="platform">
     <div class="wrap">
       <div class="block feat">
+        <div class="feat-rail" aria-hidden="true">
+          <div class="rail-step is-active"><span class="rail-line"></span><span class="rail-num">01</span></div>
+          <div class="rail-step"><span class="rail-line"></span><span class="rail-num">02</span></div>
+        </div>
         <div class="feat-text">
           <div class="feat-item is-active" data-feat="0">
         <p class="eyebrow-p"><a class="eyebrow" href="#platform">ZeroDash Platform
@@ -1512,7 +1526,7 @@ body.lm-locked{overflow:hidden}
   // ----- platform / FDE scroll feature -----
   (function(){
     var items=Array.prototype.slice.call(document.querySelectorAll('.feat-item')),panes=Array.prototype.slice.call(document.querySelectorAll('.feat-pane'));if(!items.length)return;
-    var cur=0;function set(n){if(n===cur)return;cur=n;items.forEach(function(el,k){el.classList.toggle('is-active',k===n);});panes.forEach(function(el,k){el.classList.toggle('on',k===n);});}
+    var cur=0;var rail=Array.prototype.slice.call(document.querySelectorAll('.rail-step'));function set(n){if(n===cur)return;cur=n;items.forEach(function(el,k){el.classList.toggle('is-active',k===n);});panes.forEach(function(el,k){el.classList.toggle('on',k===n);});rail.forEach(function(el,k){el.classList.toggle('is-active',k===n);});}
     function pick(){if(innerWidth<1024)return;var mid=innerHeight*0.5,best=0,bd=1e9;items.forEach(function(el,k){var r=el.getBoundingClientRect(),c=(r.top+r.bottom)/2,d=Math.abs(c-mid);if(d<bd){bd=d;best=k;}});set(best);}
     addEventListener('scroll',pick,{passive:true});addEventListener('resize',pick);pick();
   })();
